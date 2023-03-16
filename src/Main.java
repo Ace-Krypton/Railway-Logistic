@@ -19,7 +19,7 @@ public class Main {
             input = scan.next();
             switch(input.toLowerCase(Locale.ROOT)) {
                 case "1" -> {
-                    
+
                 }
             }
         }
