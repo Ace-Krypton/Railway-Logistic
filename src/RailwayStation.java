@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class RailwayStation {
-    public ArrayList<RailwayStation> stations = new ArrayList<>();
     public ArrayList<Locomotive> locomotives = new ArrayList<>();
     private String name;
     private String location;
@@ -33,25 +32,32 @@ public class RailwayStation {
     }
 
     public void createLocomotives(Locomotive locomotiveObjs) {
-        if (stations.isEmpty()) {
+        if (holder.stations.isEmpty()) {
             System.out.println("Please, first create the Railway Station");
             return;
         }
 
+        int inputInt;
+        boolean loop = true;
         System.out.print("Enter the name of the locomotive: ");
         inputStr = scan.next();
         locomotiveObjs.setName(inputStr);
 
         System.out.println("Choose the home railway station: ");
-        for (RailwayStation station : stations) {
+        for (RailwayStation station : holder.stations) {
             System.out.println(station);
 
             System.out.print("> ");
-            int inputInt = scan.nextInt();
+            inputInt = scan.nextInt();
 
-            if (inputInt != station.ID) {
-                System.out.println("This station is not exist!");
+            while (loop) {
+                if (inputInt != station.ID) {
+                    System.out.println("Please, enter the ID correctly");
+                    System.out.print("> ");
+                    inputInt = scan.nextInt();
+                } else loop = false;
             }
+            System.out.println(station.getName() + " added");
         }
 
         locomotives.add(locomotiveObjs);
@@ -66,7 +72,7 @@ public class RailwayStation {
         inputStr = scan.next();
         stationObj.setLocation(inputStr);
 
-        stations.add(stationObj);
+        holder.stations.add(stationObj);
     }
 
     public String toString() {
