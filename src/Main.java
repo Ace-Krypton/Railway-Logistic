@@ -6,8 +6,8 @@ public class Main {
     NOTES
     First Day of the project:
     started at 8:30
-    ended at ?
-     */
+    ended at 9:40
+    */
     static RailwayStation station = new RailwayStation();
 
     public static void main(String[] args) {
