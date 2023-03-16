@@ -33,12 +33,14 @@ public class RailwayStation {
 
     public void createLocomotives(Locomotive locomotiveObjs) {
         if (holder.stations.isEmpty()) {
-            System.out.println("Please, first create the Railway Station");
+            System.out.println("Please, first create a Railway Station");
             return;
         }
 
         int inputInt;
         boolean loop = true;
+        boolean foundStation = false;
+
         System.out.print("Enter the name of the locomotive: ");
         inputStr = scan.next();
         locomotiveObjs.setName(inputStr);
@@ -46,18 +48,27 @@ public class RailwayStation {
         System.out.println("Choose the home railway station: ");
         for (RailwayStation station : holder.stations) {
             System.out.println(station);
+        }
 
-            System.out.print("> ");
-            inputInt = scan.nextInt();
+        System.out.print("> ");
+        inputInt = scan.nextInt();
 
-            while (loop) {
-                if (inputInt != station.ID) {
-                    System.out.println("Please, enter the ID correctly");
-                    System.out.print("> ");
-                    inputInt = scan.nextInt();
-                } else loop = false;
+        while (loop) {
+            for (RailwayStation station : holder.stations) {
+                if (inputInt == station.ID) {
+                    foundStation = true;
+                    locomotiveObjs.setHome(station);
+                    System.out.println(station.getName() + " added");
+                    break;
+                }
             }
-            System.out.println(station.getName() + " added");
+            if (foundStation) {
+                loop = false;
+            } else {
+                System.out.println("Please, enter the ID correctly");
+                System.out.print("> ");
+                inputInt = scan.nextInt();
+            }
         }
 
         locomotives.add(locomotiveObjs);
