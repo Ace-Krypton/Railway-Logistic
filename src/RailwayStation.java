@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class RailwayStation {
+    private static final ArrayList<RailwayStation> stations = new ArrayList<>();
     public ArrayList<Locomotive> locomotives = new ArrayList<>();
     private String name;
     private String location;
@@ -32,7 +33,7 @@ public class RailwayStation {
     }
 
     public void createLocomotives(Locomotive locomotiveObjs) {
-        if (holder.stations.isEmpty()) {
+        if (stations.isEmpty()) {
             System.out.println("Please, first create a Railway Station");
             return;
         }
@@ -46,7 +47,7 @@ public class RailwayStation {
         locomotiveObjs.setName(inputStr);
 
         System.out.println("Choose the home railway station: ");
-        for (RailwayStation station : holder.stations) {
+        for (RailwayStation station : stations) {
             System.out.println(station);
         }
 
@@ -54,7 +55,7 @@ public class RailwayStation {
         inputInt = scan.nextInt();
 
         while (loop) {
-            for (RailwayStation station : holder.stations) {
+            for (RailwayStation station : stations) {
                 if (inputInt == station.ID) {
                     foundStation = true;
                     locomotiveObjs.setHome(station);
@@ -83,7 +84,7 @@ public class RailwayStation {
         inputStr = scan.next();
         stationObj.setLocation(inputStr);
 
-        holder.stations.add(stationObj);
+        stations.add(stationObj);
     }
 
     public String toString() {
