@@ -1,4 +1,5 @@
 public class Locomotive {
+    private double speed = 100;
     private String name;
     private RailwayStation home;
     private RailwayStation source;
@@ -9,6 +10,10 @@ public class Locomotive {
     public Locomotive() {
         ++id;
         ID = id;
+    }
+
+    public double getSpeed() {
+        return this.speed;
     }
 
     public String getName() {
@@ -41,6 +46,11 @@ public class Locomotive {
 
     public void setDestination(RailwayStation destination) {
         this.destination = destination;
+    }
+
+    public void updateSpeed() {
+        double change = this.speed * 0.03 * (Math.random() > 0.5 ? 1 : -1);
+        this.speed += change;
     }
 
     public String toString() {
