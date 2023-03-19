@@ -26,7 +26,7 @@ public class Main {
                 case "1" -> station.createStations(new RailwayStation());
                 case "2" -> station.createLocomotives(new Locomotive());
                 case "0" -> loop = false;
-                default -> System.out.println("Please, choose correct number");
+                default -> System.out.println("Please, choose correct number\n");
             }
         }
     }

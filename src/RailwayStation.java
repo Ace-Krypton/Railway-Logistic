@@ -9,7 +9,7 @@ public class RailwayStation {
     private final Scanner scan = new Scanner(System.in);
     private String inputStr;
     private static int id = -1;
-    int ID;
+    public int ID;
 
     public RailwayStation() {
         ++id;
@@ -34,7 +34,7 @@ public class RailwayStation {
 
     public void createLocomotives(Locomotive locomotiveObjs) {
         if (stations.isEmpty()) {
-            System.out.println("Please, first create a Railway Station");
+            System.out.println("Please, first create a Railway Station\n");
             return;
         }
 
@@ -59,7 +59,7 @@ public class RailwayStation {
                 if (inputInt == station.ID) {
                     foundStation = true;
                     locomotiveObjs.setHome(station);
-                    System.out.println(station.getName() + " added");
+                    System.out.println(station.getName() + " added successfully to the Locomotive");
                     break;
                 }
             }
@@ -71,6 +71,8 @@ public class RailwayStation {
                 inputInt = scan.nextInt();
             }
         }
+
+        
 
         locomotives.add(locomotiveObjs);
     }
@@ -84,6 +86,7 @@ public class RailwayStation {
         inputStr = scan.next();
         stationObj.setLocation(inputStr);
 
+        System.out.println(inputStr + " added successfully to the Railway Stations");
         stations.add(stationObj);
     }
 
