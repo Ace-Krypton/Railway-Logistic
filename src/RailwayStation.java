@@ -33,9 +33,9 @@ public class RailwayStation {
     }
 
     public void createLocomotives(Locomotive locomotiveObjs) {
-        if (stations.isEmpty() || (long) stations.size() < 2) {
+        if (stations.isEmpty() || (long) stations.size() < 3) {
             System.out.println(
-                    "You need to have at least 2 stations in the Railway\n" +
+                    "You need to have at least 3 stations in the Railway\n" +
                     "You only have " + (long) stations.size() +
                     ", create stations with option number [1]\n"
             );
@@ -50,7 +50,7 @@ public class RailwayStation {
         inputStr = scan.next();
         locomotiveObjs.setName(inputStr);
 
-        System.out.println("Choose the home railway station: ");
+        System.out.println("Choose the home railway station: [Enter the ID number]");
         printStations();
 
         System.out.print("> ");
@@ -77,11 +77,11 @@ public class RailwayStation {
         System.out.println("Is your source railway station same with home?\n" +
                 "if \"yes\" input \"y\" if \"no\" input \"N\"");
 
-        System.out.print("y/N >");
+        System.out.print("y/N > ");
         inputStr = scan.next();
 
         if (inputStr.equalsIgnoreCase("y") || inputStr.equalsIgnoreCase("Y")) {
-            System.out.println("Choose the source railway station: ");
+            System.out.println("Choose the source railway station: [Enter the ID number]");
             printStations();
 
             System.out.print("> ");
@@ -108,7 +108,7 @@ public class RailwayStation {
                 }
             }
         } else {
-            System.out.println("Choose the destination railway station: ");
+            System.out.println("Choose the destination railway station: [Enter the ID number]");
             printStations();
 
             System.out.print("> ");
