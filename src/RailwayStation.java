@@ -50,6 +50,19 @@ public class RailwayStation {
         inputStr = scan.next();
         locomotiveObjs.setName(inputStr);
 
+        System.out.print("Enter the maximum number of railroad cars: ");
+        inputInt = scan.nextInt();
+        locomotiveObjs.setMaxRailroadCars(inputInt);
+
+        System.out.print("Enter the maximum weight for transported load: ");
+        double maxWeight;
+        maxWeight = scan.nextDouble();
+        locomotiveObjs.setMaxWeight(maxWeight);
+
+        System.out.print("Enter the maximum number of railroad cars that need to be connected to the electricity grid: ");
+        inputInt = scan.nextInt();
+        locomotiveObjs.setMaxElectricalGrid(inputInt);
+
         System.out.println("Choose the home railway station: [Enter the ID number]");
         printStations();
 

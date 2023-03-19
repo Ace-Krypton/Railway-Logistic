@@ -22,12 +22,8 @@ public class Main {
             menu();
             System.out.print("> ");
             input = scan.next();
+
             switch(input.toLowerCase(Locale.ROOT)) {
-                case "test" -> {
-                    for (Locomotive locomotive : station.locomotives) {
-                        System.out.println(locomotive);
-                    }
-                }
                 case "1" -> station.createStations(new RailwayStation());
                 case "2" -> station.createLocomotives(new Locomotive());
                 case "0" -> loop = false;

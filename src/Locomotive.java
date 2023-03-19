@@ -2,10 +2,26 @@ public class Locomotive {
     private double speed = 100;
     private String name;
     private RailwayStation home;
+    private int maxRailroadCars;
+    private double maxWeight;
+    private int maxElectricalGrid;
+
+    public void setMaxRailroadCars(int maxRailroadCars) {
+        this.maxRailroadCars = maxRailroadCars;
+    }
+
+    public void setMaxWeight(double maxWeight) {
+        this.maxWeight = maxWeight;
+    }
+
+    public void setMaxElectricalGrid(int maxElectricalGrid) {
+        this.maxElectricalGrid = maxElectricalGrid;
+    }
+
     private RailwayStation source;
     private RailwayStation destination;
     private static int id;
-    int ID;
+    public int ID;
 
     public Locomotive() {
         ++id;
