@@ -7,6 +7,9 @@ public class Main {
     First Day of the project:
     started at 8:30
     ended at 9:40
+    Second Day of the project:
+    started at 5:40
+    ended at ?
     */
     static RailwayStation station = new RailwayStation();
 
@@ -23,6 +26,7 @@ public class Main {
                 case "1" -> station.createStations(new RailwayStation());
                 case "2" -> station.createLocomotives(new Locomotive());
                 case "0" -> loop = false;
+                default -> System.out.println("Please, choose correct number");
             }
         }
     }
