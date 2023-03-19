@@ -44,6 +44,10 @@ public class Locomotive {
     }
 
     public String toString() {
-        return ID + " ";
+        return ID + ". "
+                + "Name: " + getName()
+                + "\nHome: " + getHome().getName()
+                + "\nSource: " + getSource().getName()
+                + "\nDestination: " + getDestination().getName();
     }
 }

@@ -80,7 +80,7 @@ public class RailwayStation {
         System.out.print("y/N > ");
         inputStr = scan.next();
 
-        if (inputStr.equalsIgnoreCase("y") || inputStr.equalsIgnoreCase("Y")) {
+        if (inputStr.equalsIgnoreCase("N")) {
             System.out.println("Choose the source railway station: [Enter the ID number]");
             printStations();
 
@@ -107,35 +107,35 @@ public class RailwayStation {
                     inputInt = scan.nextInt();
                 }
             }
-        } else {
-            System.out.println("Choose the destination railway station: [Enter the ID number]");
-            printStations();
+        }
+        System.out.println("Choose the destination railway station: [Enter the ID number]");
+        printStations();
 
-            System.out.print("> ");
-            inputInt = scan.nextInt();
+        System.out.print("> ");
+        inputInt = scan.nextInt();
 
-            boolean destinationLoop = true;
-            boolean foundDestinationStation = false;
+        boolean destinationLoop = true;
+        boolean foundDestinationStation = false;
 
-            while (destinationLoop) {
-                for (RailwayStation station : stations) {
-                    if (inputInt == station.ID) {
-                        foundDestinationStation = true;
-                        locomotiveObjs.setDestination(station);
-                        stations.remove(station);
-                        System.out.println(station.getName() + " added successfully to the Locomotive\n");
-                        break;
-                    }
-                } if (foundDestinationStation) {
-                    destinationLoop = false;
-                } else {
-                    System.out.println("Please, enter the ID correctly");
-                    System.out.print("> ");
-                    inputInt = scan.nextInt();
+        while (destinationLoop) {
+            for (RailwayStation station : stations) {
+                if (inputInt == station.ID) {
+                    foundDestinationStation = true;
+                    locomotiveObjs.setDestination(station);
+                    stations.remove(station);
+                    System.out.println(station.getName() + " added successfully to the Locomotive\n");
+                    break;
                 }
+            } if (foundDestinationStation) {
+                destinationLoop = false;
+            } else {
+                System.out.println("Please, enter the ID correctly");
+                System.out.print("> ");
+                inputInt = scan.nextInt();
             }
         }
 
+        System.out.println(locomotiveObjs + " added successfully to the Locomotives\n");
         locomotives.add(locomotiveObjs);
     }
 
@@ -154,7 +154,7 @@ public class RailwayStation {
         inputStr = scan.next();
         stationObj.setLocation(inputStr);
 
-        System.out.println(stationObj.getName() + " added successfully to the Railway Stations\n");
+        System.out.println("[ " + stationObj.getName() + " added successfully to the Railway Stations\n");
         stations.add(stationObj);
     }
 
