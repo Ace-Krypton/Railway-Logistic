@@ -190,7 +190,7 @@ public class Locomotive {
             }
         }
 
-        System.out.println("[ " + locomotiveObjs + " added successfully to the Locomotives\n" + " ]");
+        System.out.println("[ " + locomotiveObjs + " added successfully to the Locomotives" + " ]\n");
         locomotives.add(locomotiveObjs);
     }
 

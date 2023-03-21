@@ -45,7 +45,7 @@ public class RailwayStation {
         inputStr = scan.next();
         stationObj.setLocation(inputStr);
 
-        System.out.println("[ " + stationObj.getName() + " added successfully to the Railway Stations\n" + " ]");
+        System.out.println("[ " + stationObj.getName() + " added successfully to the Railway Stations" + " ]\n");
         stations.add(stationObj);
     }
 
