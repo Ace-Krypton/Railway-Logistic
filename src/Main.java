@@ -30,7 +30,7 @@ public class Main {
 
             switch(input.toLowerCase(Locale.ROOT)) {
                 case "test1" -> RailroadCar.print();
-                case "test" -> railroadCar.createRailroadCar(new RailroadCar());
+                case "test" -> railroadCar.createRailroadCar();
                 case "1" -> station.createStations(new RailwayStation());
                 case "2" -> locomotive.createLocomotives(new Locomotive());
                 case "0" -> {

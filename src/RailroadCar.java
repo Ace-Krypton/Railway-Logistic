@@ -47,7 +47,9 @@ public class RailroadCar {
         return grossWeight;
     }
 
-    public void createRailroadCar(RailroadCar carsObj) {
+    public void createRailroadCar() {
+        System.out.print("Enter the type: ");
+        String type = scan.next();
         System.out.print("Enter the shipper: ");
         String shipper = scan.next();
         System.out.print("Enter the security info: ");
@@ -56,12 +58,18 @@ public class RailroadCar {
         double netWeight = scan.nextDouble();
         System.out.print("Enter the gross weight: ");
         double grossWeight = scan.nextDouble();
-        System.out.print("Enter the number of seats: ");
-        int numberOfSeats = scan.nextInt();
 
-        Passenger passenger = new Passenger(shipper, securityInfo, netWeight, grossWeight, numberOfSeats);
-        Passenger.passengers.add(passenger);
-        railroadCars.add(carsObj);
+        if (type.equalsIgnoreCase("Passenger")) {
+            System.out.print("Enter the number of seats: ");
+            int numberOfSeats = scan.nextInt();
+            Passenger passenger = new Passenger(shipper, securityInfo, netWeight, grossWeight, numberOfSeats);
+            Passenger.passengers.add(passenger);
+        } else {
+            RailroadCar railroadCar = new RailroadCar(type, shipper, securityInfo, netWeight, grossWeight);
+            railroadCars.add(railroadCar);
+        }
+
+        railroadCars.add(this);
     }
 
     public static void print() {
@@ -95,5 +103,4 @@ public class RailroadCar {
                     + "\nGross Weight: " + getGrossWeight();
         }
     }
-
 }
