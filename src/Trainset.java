@@ -6,8 +6,4 @@ public class Trainset {
         ++id;
         ID = id;
     }
-
-    public void createRailroadCars() {
-
-    }
 }

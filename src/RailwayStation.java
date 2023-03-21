@@ -49,6 +49,7 @@ public class RailwayStation {
         stations.add(stationObj);
     }
 
+    @Override
     public String toString() {
         return ID + ". "
                 + "Name: " + getName()

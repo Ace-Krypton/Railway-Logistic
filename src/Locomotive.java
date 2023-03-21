@@ -194,12 +194,7 @@ public class Locomotive {
         locomotives.add(locomotiveObjs);
     }
 
-    public void printLocomotives() {
-        for (Locomotive locomotive : locomotives) {
-            System.out.println(locomotive);
-        }
-    }
-
+    @Override
     public String toString() {
         return ID + ". "
                 + "Name: " + getName()
