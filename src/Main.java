@@ -9,9 +9,13 @@ public class Main {
     ended at 9:40
     Second Day of the project:
     started at 5:40
+    ended at 8:04
+    Third Day of the project
+    started at 6:38
     ended at ?
     */
     static RailwayStation station = new RailwayStation();
+    static Locomotive locomotive = new Locomotive();
 
     public static void main(String[] args) {
         String input;
@@ -25,8 +29,11 @@ public class Main {
 
             switch(input.toLowerCase(Locale.ROOT)) {
                 case "1" -> station.createStations(new RailwayStation());
-                case "2" -> station.createLocomotives(new Locomotive());
-                case "0" -> loop = false;
+                case "2" -> locomotive.createLocomotives(new Locomotive());
+                case "0" -> {
+                    System.out.println("exiting...");
+                    loop = false;
+                }
                 default -> System.out.println("Please, choose correct number\n");
             }
         }
