@@ -16,6 +16,7 @@ public class Main {
     */
     static RailwayStation station = new RailwayStation();
     static Locomotive locomotive = new Locomotive();
+    static RailroadCar railroadCar = new RailroadCar();
 
     public static void main(String[] args) {
         String input;
@@ -29,7 +30,7 @@ public class Main {
 
             switch(input.toLowerCase(Locale.ROOT)) {
                 case "test1" -> RailroadCar.print();
-                case "test" -> RailroadCar.createRailroadCar();
+                case "test" -> railroadCar.createRailroadCar(new RailroadCar());
                 case "1" -> station.createStations(new RailwayStation());
                 case "2" -> locomotive.createLocomotives(new Locomotive());
                 case "0" -> {

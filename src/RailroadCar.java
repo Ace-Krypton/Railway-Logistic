@@ -4,13 +4,18 @@ import java.util.Scanner;
 public class RailroadCar {
     private static final Scanner scan = new Scanner(System.in);
     private static final ArrayList<RailroadCar> railroadCars = new ArrayList<>();
-    private static int id;
+    private static int id = -1;
     public int ID;
-    private final String type;
-    private final String shipper;
-    private final String securityInfo;
-    private final double netWeight;
-    private final double grossWeight;
+    private String type;
+    private String shipper;
+    private String securityInfo;
+    private double netWeight;
+    private double grossWeight;
+
+    public RailroadCar() {
+        ++id;
+        ID = id;
+    }
 
     public RailroadCar(String type, String shipper, String securityInfo, double netWeight, double grossWeight) {
         ++id;
@@ -42,7 +47,7 @@ public class RailroadCar {
         return grossWeight;
     }
 
-    public static void createRailroadCar() {
+    public void createRailroadCar(RailroadCar carsObj) {
         System.out.print("Enter the shipper: ");
         String shipper = scan.next();
         System.out.print("Enter the security info: ");
@@ -55,10 +60,17 @@ public class RailroadCar {
         int numberOfSeats = scan.nextInt();
 
         Passenger passenger = new Passenger(shipper, securityInfo, netWeight, grossWeight, numberOfSeats);
-        railroadCars.add(passenger);
+        Passenger.passengers.add(passenger);
+        railroadCars.add(carsObj);
     }
 
     public static void print() {
+        for (Passenger passenger : Passenger.passengers) {
+            System.out.println(passenger);
+        }
+
+        System.out.println("------------------");
+
         for (RailroadCar car : railroadCars) {
             System.out.println(car);
         }
@@ -66,11 +78,22 @@ public class RailroadCar {
 
     @Override
     public String toString() {
-        return ID + ". "
-                + "Type: " + getType()
-                + "Shipper: " + getShipper()
-                + "Security Info: " + getSecurityInfo()
-                + "Net Weight: " + getNetWeight()
-                + "Gross Weight: " + getGrossWeight();
+        if (this instanceof Passenger passenger) {
+            return ID + ". "
+                    + "Type: " + getType()
+                    + "\nShipper: " + getShipper()
+                    + "\nSecurity Info: " + getSecurityInfo()
+                    + "\nNet Weight: " + getNetWeight()
+                    + "\nGross Weight: " + getGrossWeight()
+                    + "\nNumber of Seats: " + passenger.getNumSeats();
+        } else {
+            return ID + ". "
+                    + "Type: " + getType()
+                    + "\nShipper: " + getShipper()
+                    + "\nSecurity Info: " + getSecurityInfo()
+                    + "\nNet Weight: " + getNetWeight()
+                    + "\nGross Weight: " + getGrossWeight();
+        }
     }
+
 }
