@@ -1,7 +1,9 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class RailroadCar {
-    private static final ArrayList<RailroadCar> railroads = new ArrayList<>();
+    private static final Scanner scan = new Scanner(System.in);
+    private static final ArrayList<RailroadCar> railroadCars = new ArrayList<>();
     private static int id;
     public int ID;
     private final String type;
@@ -38,6 +40,28 @@ public class RailroadCar {
 
     public double getGrossWeight() {
         return grossWeight;
+    }
+
+    public static void createRailroadCar() {
+        System.out.print("Enter the shipper: ");
+        String shipper = scan.next();
+        System.out.print("Enter the security info: ");
+        String securityInfo = scan.next();
+        System.out.print("Enter the net weight: ");
+        double netWeight = scan.nextDouble();
+        System.out.print("Enter the gross weight: ");
+        double grossWeight = scan.nextDouble();
+        System.out.print("Enter the number of seats: ");
+        int numberOfSeats = scan.nextInt();
+
+        Passenger passenger = new Passenger(shipper, securityInfo, netWeight, grossWeight, numberOfSeats);
+        railroadCars.add(passenger);
+    }
+
+    public static void print() {
+        for (RailroadCar car : railroadCars) {
+            System.out.println(car);
+        }
     }
 
     @Override
