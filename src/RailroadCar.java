@@ -63,22 +63,14 @@ public class RailroadCar {
             System.out.print("Enter the number of seats: ");
             int numberOfSeats = scan.nextInt();
             Passenger passenger = new Passenger(shipper, securityInfo, netWeight, grossWeight, numberOfSeats);
-            Passenger.passengers.add(passenger);
+            railroadCars.add(passenger);
         } else {
             RailroadCar railroadCar = new RailroadCar(type, shipper, securityInfo, netWeight, grossWeight);
             railroadCars.add(railroadCar);
         }
-
-        railroadCars.add(this);
     }
 
     public static void print() {
-        for (Passenger passenger : Passenger.passengers) {
-            System.out.println(passenger);
-        }
-
-        System.out.println("------------------");
-
         for (RailroadCar car : railroadCars) {
             System.out.println(car);
         }
@@ -93,7 +85,8 @@ public class RailroadCar {
                     + "\nSecurity Info: " + getSecurityInfo()
                     + "\nNet Weight: " + getNetWeight()
                     + "\nGross Weight: " + getGrossWeight()
-                    + "\nNumber of Seats: " + passenger.getNumSeats();
+                    + "\nNumber of Seats: " + passenger.getNumSeats()
+                    + "\nRequires Electrical Connection: " + passenger.requiresElectricalConnection();
         } else {
             return ID + ". "
                     + "Type: " + getType()
