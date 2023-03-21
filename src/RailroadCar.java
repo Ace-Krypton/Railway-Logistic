@@ -1,4 +1,7 @@
+import java.util.ArrayList;
+
 public class RailroadCar {
+    private static final ArrayList<RailroadCar> railroads = new ArrayList<>();
     private static int id;
     public int ID;
     private final String type;
@@ -15,10 +18,6 @@ public class RailroadCar {
         this.securityInfo = securityInfo;
         this.netWeight = netWeight;
         this.grossWeight = grossWeight;
-    }
-
-    public int getID() {
-        return id;
     }
 
     public String getType() {
@@ -39,5 +38,15 @@ public class RailroadCar {
 
     public double getGrossWeight() {
         return grossWeight;
+    }
+
+    @Override
+    public String toString() {
+        return ID + ". "
+                + "Type: " + getType()
+                + "Shipper: " + getShipper()
+                + "Security Info: " + getSecurityInfo()
+                + "Net Weight: " + getNetWeight()
+                + "Gross Weight: " + getGrossWeight();
     }
 }
