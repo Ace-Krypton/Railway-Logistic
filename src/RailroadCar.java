@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class RailroadCar {
@@ -59,14 +60,22 @@ public class RailroadCar {
         System.out.print("Enter the gross weight: ");
         double grossWeight = scan.nextDouble();
 
-        if (type.equalsIgnoreCase("Passenger")) {
-            System.out.print("Enter the number of seats: ");
-            int numberOfSeats = scan.nextInt();
-            Passenger passenger = new Passenger(shipper, securityInfo, netWeight, grossWeight, numberOfSeats);
-            railroadCars.add(passenger);
-        } else {
-            RailroadCar railroadCar = new RailroadCar(type, shipper, securityInfo, netWeight, grossWeight);
-            railroadCars.add(railroadCar);
+        switch (type.toLowerCase(Locale.ROOT)) {
+            case "passenger" -> {
+                System.out.print("Enter the number of seats: ");
+                int numberOfSeats = scan.nextInt();
+                Passenger passenger = new Passenger(shipper, securityInfo, netWeight, grossWeight, numberOfSeats);
+                railroadCars.add(passenger);
+            }
+
+            case "post office" -> {
+
+            }
+
+            default -> {
+                RailroadCar railroadCar = new RailroadCar(type, shipper, securityInfo, netWeight, grossWeight);
+                railroadCars.add(railroadCar);
+            }
         }
     }
 
