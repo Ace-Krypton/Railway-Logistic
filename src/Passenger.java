@@ -1,28 +1,20 @@
 import java.util.ArrayList;
 
-public class Passenger {
+public class Passenger extends RailroadCar {
     private static final ArrayList<Passenger> passangers = new ArrayList<>();
-    private final boolean connection = true;
-    private String shipper;
-    private String securityInformation;
-    private double netWeight;
-    private double grossWeight;
-    private int numberOfSeats;
-    private static int id;
-    public int ID;
+    private final int numSeats;
 
-    public Passenger() {
-        ++id;
-        ID = id;
+    public Passenger(String shipper, String securityInfo, double netWeight, double grossWeight,
+                     int numSeats) {
+        super("Passenger", shipper, securityInfo, netWeight, grossWeight);
+        this.numSeats = numSeats;
     }
 
-    public String getShipper() {
-        return shipper;
+    public int getNumSeats() {
+        return numSeats;
     }
 
-    @Override
-    public String toString() {
-        return ID + ". "
-                + "Shipper: " + getShipper();
+    public boolean requiresElectricalConnection() {
+        return true;
     }
 }
