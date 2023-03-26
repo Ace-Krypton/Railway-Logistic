@@ -332,15 +332,49 @@ public class RailroadCar {
                     + "\nMaximum Weight Capacity for Cargo: " + basicFreight.getMaxWeightForCargo()
                     + "\nRequires Electrical Connection: " + basicFreight.requiresElectricalConnection();
         } else if (this instanceof HeavyFreight heavyFreight) {
-            return ID + ". "
-                    + "Type: " + getType()
-                    + "\nShipper: " + getShipper()
-                    + "\nSecurity Info: " + getSecurityInfo()
-                    + "\nNet Weight: " + getNetWeight()
-                    + "\nGross Weight: " + getGrossWeight()
-                    + "\nType of Cargo: " + heavyFreight.getTypeOfCargo()
-                    + "\nMaximum Weight Capacity for Cargo: " + heavyFreight.getMaxWeightForCargo()
-                    + "\nRequires Electrical Connection: " + heavyFreight.requiresElectricalConnection();
+            if (heavyFreight instanceof LiquidToxic liquidToxic) {
+                return ID + ". "
+                        + "Type: " + getType()
+                        + "\nShipper: " + getShipper()
+                        + "\nSecurity Info: " + getSecurityInfo()
+                        + "\nNet Weight: " + getNetWeight()
+                        + "\nGross Weight: " + getGrossWeight()
+                        + "\nType of Cargo: " + liquidToxic.getTypeOfCargo()
+                        + "\nMaximum Weight Capacity for Cargo: " + liquidToxic.getMaxWeightForCargo()
+                        + "\nPH Level: " + liquidToxic.getPHLevel()
+                        + "\nIs Flammable?: " + liquidToxic.flammability()
+                        + "\nRequires Electrical Connection: " + liquidToxic.requiresElectricalConnection();
+            } else if (heavyFreight instanceof Toxic toxic) {
+                return ID + ". "
+                        + "Type: " + getType()
+                        + "\nShipper: " + getShipper()
+                        + "\nSecurity Info: " + getSecurityInfo()
+                        + "\nNet Weight: " + getNetWeight()
+                        + "\nGross Weight: " + getGrossWeight()
+                        + "\nType of Cargo: " + toxic.getTypeOfCargo()
+                        + "\nMaximum Weight Capacity for Cargo: " + toxic.getMaxWeightForCargo()
+                        + "\nRequires Electrical Connection: " + toxic.requiresElectricalConnection();
+            } else if (heavyFreight instanceof Explosives explosives) {
+                return ID + ". "
+                        + "Type: " + getType()
+                        + "\nShipper: " + getShipper()
+                        + "\nSecurity Info: " + getSecurityInfo()
+                        + "\nNet Weight: " + getNetWeight()
+                        + "\nGross Weight: " + getGrossWeight()
+                        + "\nType of Cargo: " + explosives.getTypeOfCargo()
+                        + "\nMaximum Weight Capacity for Cargo: " + explosives.getMaxWeightForCargo()
+                        + "\nRequires Electrical Connection: " + explosives.requiresElectricalConnection();
+            } else {
+                return ID + ". "
+                        + "Type: " + getType()
+                        + "\nShipper: " + getShipper()
+                        + "\nSecurity Info: " + getSecurityInfo()
+                        + "\nNet Weight: " + getNetWeight()
+                        + "\nGross Weight: " + getGrossWeight()
+                        + "\nType of Cargo: " + heavyFreight.getTypeOfCargo()
+                        + "\nMaximum Weight Capacity for Cargo: " + heavyFreight.getMaxWeightForCargo()
+                        + "\nRequires Electrical Connection: " + heavyFreight.requiresElectricalConnection();
+            }
         } else {
             return ID + ". "
                     + "Type: " + getType()
