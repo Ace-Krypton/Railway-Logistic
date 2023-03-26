@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class RailroadCar {
@@ -51,6 +50,15 @@ public class RailroadCar {
     public void createRailroadCar() {
         System.out.print("Enter the type: ");
         String type = scan.next();
+        System.out.println("""
+                [1] Passenger
+                [2] Post Office
+                [3] Restaurant
+                [4] Baggage and Mail
+                [5] Basic Freight
+                [6] Heavy Freight
+                [7] Default Railroad Car
+                """);
         System.out.print("Enter the shipper: ");
         String shipper = scan.next();
         System.out.print("Enter the security info: ");
@@ -60,43 +68,45 @@ public class RailroadCar {
         System.out.print("Enter the gross weight: ");
         double grossWeight = scan.nextDouble();
 
-        switch (type.toLowerCase(Locale.ROOT)) {
-            case "passenger" -> {
+        switch (type) {
+            case "1" -> {
                 System.out.print("Enter the number of seats: ");
                 int numberOfSeats = scan.nextInt();
                 Passenger passenger = new Passenger(shipper, securityInfo, netWeight, grossWeight, numberOfSeats);
                 railroadCars.add(passenger);
             }
 
-            case "post office" -> {
+            case "2" -> {
                 PostOffice postOffice = new PostOffice(shipper, securityInfo, netWeight, grossWeight);
                 railroadCars.add(postOffice);
             }
 
-            case "restaurant" -> {
+            case "3" -> {
                 Restaurant restaurant = new Restaurant(shipper, securityInfo, netWeight, grossWeight);
                 railroadCars.add(restaurant);
             }
 
-            case "baggage and mail" -> {
+            case "4" -> {
                 BaggageAndMail baggageAndMail = new BaggageAndMail(shipper, securityInfo, netWeight, grossWeight);
                 railroadCars.add(baggageAndMail);
             }
 
-            case "basic freight" -> {
+            case "5" -> {
                 BasicFreight basicFreight = new BasicFreight(shipper, securityInfo, netWeight, grossWeight);
                 railroadCars.add(basicFreight);
             }
 
-            case "heavy freight" -> {
+            case "6" -> {
                 HeavyFreight heavyFreight = new HeavyFreight(shipper, securityInfo, netWeight, grossWeight);
                 railroadCars.add(heavyFreight);
             }
 
-            default -> {
+            case "7" -> {
                 RailroadCar railroadCar = new RailroadCar(type, shipper, securityInfo, netWeight, grossWeight);
                 railroadCars.add(railroadCar);
             }
+
+            default -> System.out.println("Please, choose correct number\n");
         }
     }
 
