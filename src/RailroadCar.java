@@ -206,8 +206,17 @@ public class RailroadCar {
                     }
 
                     case "6" -> {
+                        System.out.print("Enter the pressure rate: ");
+                        double pressureRating = scan.nextDouble();
+
+                        System.out.println("Does the car has gas detection system?\n" +
+                                "if \"yes\" input \"y\" if \"no\" input \"N\"");
+                        System.out.print("y/N > ");
+                        String input = scan.next();
+                        boolean gasDetectionSystem = input.equalsIgnoreCase("Y");
+
                         Gaseous gaseous = new Gaseous(shipper, securityInfo, netWeight, grossWeight,
-                                typeOfCargo, maxWeightForCargo);
+                                typeOfCargo, maxWeightForCargo, pressureRating, gasDetectionSystem);
                         railroadCars.add(gaseous);
                         System.out.println("Gaseous added successfully to the railroad cars");
                         return;
@@ -253,8 +262,18 @@ public class RailroadCar {
                     }
 
                     case "7" -> {
+                        System.out.print("Enter the hazardous rating of the cargo " +
+                                "(1 indicates low hazard and 5 indicates high hazard): ");
+                        int hazardousRating = scan.nextInt();
+
+                        System.out.println("Does it have air filtering system?\n" +
+                                "if \"yes\" input \"y\" if \"no\" input \"N\"");
+                        System.out.print("y/N > ");
+                        String input = scan.next();
+                        boolean doesHaveAirFilterationSystem = input.equalsIgnoreCase("Y");
+
                         Toxic toxic = new Toxic(shipper, securityInfo, netWeight, grossWeight,
-                                typeOfCargo, maxWeightForCargo);
+                                typeOfCargo, maxWeightForCargo, hazardousRating, doesHaveAirFilterationSystem);
                         railroadCars.add(toxic);
                         System.out.println("Toxic added successfully to the railroad cars");
                         return;
@@ -391,6 +410,8 @@ public class RailroadCar {
                         + "\nGross Weight: " + getGrossWeight()
                         + "\nType of Cargo: " + gaseous.getTypeOfCargo()
                         + "\nMaximum Weight Capacity for Cargo: " + gaseous.getMaxWeightForCargo()
+                        + "\nPressure Rating: " + gaseous.getPressureRating()
+                        + "\nDoes It Have Gas Detection System: " + gaseous.doesHaveGasDetectionSystem()
                         + "\nRequires Electrical Connection: " + gaseous.requiresElectricalConnection();
             } else {
                 return ID + ". "
