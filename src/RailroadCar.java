@@ -186,8 +186,20 @@ public class RailroadCar {
                     }
 
                     case "5" -> {
+                        System.out.print("Enter the PH level of the liquid (Ranges between 0-14): ");
+                        double phLevel = scan.nextDouble();
+
+                        System.out.print("Enter the freezing point for the liquids: ");
+                        double freezingPoint = scan.nextDouble();
+
+                        System.out.println("Does the liquid flammable?\n" +
+                                "if \"yes\" input \"y\" if \"no\" input \"N\"");
+                        System.out.print("y/N > ");
+                        String input = scan.next();
+                        boolean isFlammable = input.equalsIgnoreCase("Y");
+
                         Liquid liquid = new Liquid(shipper, securityInfo, netWeight, grossWeight,
-                                typeOfCargo, maxWeightForCargo);
+                                typeOfCargo, maxWeightForCargo, freezingPoint, isFlammable, phLevel);
                         railroadCars.add(liquid);
                         System.out.println("Liquid added successfully to the railroad cars");
                         return;
@@ -258,8 +270,22 @@ public class RailroadCar {
                         String input = scan.next();
                         boolean isFlammable = input.equalsIgnoreCase("Y");
 
+                        System.out.println("""
+                                [1] Drum
+                                [2] Cylinder
+                                [3] Bulk Container""");
+                        System.out.print("Enter the packaging type: ");
+                        String packagingInput = scan.next();
+                        String packagingType = "Drum";
+
+                        switch (packagingInput) {
+                            case "1" -> packagingType = "Drum";
+                            case "2" -> packagingType = "Cylinder";
+                            case "3" -> packagingType = "Bulk Container";
+                        }
+
                         LiquidToxic liquidToxic = new LiquidToxic(shipper, securityInfo, netWeight, grossWeight,
-                                typeOfCargo, maxWeightForCargo, isFlammable, phLevel);
+                                typeOfCargo, maxWeightForCargo, isFlammable, phLevel, packagingType);
                         railroadCars.add(liquidToxic);
                         System.out.println("Liquid Toxic added successfully to the railroad cars");
                         return;
@@ -352,6 +378,9 @@ public class RailroadCar {
                         + "\nGross Weight: " + getGrossWeight()
                         + "\nType of Cargo: " + liquid.getTypeOfCargo()
                         + "\nMaximum Weight Capacity for Cargo: " + liquid.getMaxWeightForCargo()
+                        + "\nPH Level of the Liquid: " + liquid.getPHLevel()
+                        + "\nDoes the Liquid Flammable: " + liquid.flammability()
+                        + "\nFreezing Degree: " + liquid.getFreezingPoint() + " °C"
                         + "\nRequires Electrical Connection: " + liquid.requiresElectricalConnection();
             } else if (basicFreight instanceof Gaseous gaseous) {
                 return ID + ". "
@@ -386,6 +415,7 @@ public class RailroadCar {
                         + "\nMaximum Weight Capacity for Cargo: " + liquidToxic.getMaxWeightForCargo()
                         + "\nPH Level of the Liquid: " + liquidToxic.getPHLevel()
                         + "\nDoes the Liquid Flammable: " + liquidToxic.flammability()
+                        + "\nPackaging Type: " + liquidToxic.getPackagingType()
                         + "\nRequires Electrical Connection: " + liquidToxic.requiresElectricalConnection();
             } else if (heavyFreight instanceof Toxic toxic) {
                 return ID + ". "
