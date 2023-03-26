@@ -1,6 +1,20 @@
 public class BaggageAndMail extends RailroadCar {
-    public BaggageAndMail(String shipper, String securityInfo, double netWeight, double grossWeight) {
+    private final int maxCompartment;
+    private final double maxWeightCapacity;
+
+    public BaggageAndMail(String shipper, String securityInfo, double netWeight,
+                          double grossWeight, int maxCompartment, double maxWeightCapacity) {
         super("Baggage And Mail", shipper, securityInfo, netWeight, grossWeight);
+        this.maxCompartment = maxCompartment;
+        this.maxWeightCapacity = maxWeightCapacity;
+    }
+
+    public double getMaxWeightCapacity() {
+        return maxWeightCapacity;
+    }
+
+    public int getMaxCompartment() {
+        return maxCompartment;
     }
 
     public boolean requiresElectricalConnection() {

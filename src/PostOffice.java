@@ -1,6 +1,20 @@
 public class PostOffice extends RailroadCar {
-    public PostOffice(String shipper, String securityInfo, double netWeight, double grossWeight) {
+    private final int numOfMailSlots;
+    private final double maxWeightForMail;
+
+    public PostOffice(String shipper, String securityInfo, double netWeight, double grossWeight,
+                      int numOfMailSlots, double maxWeightForMail) {
         super("Post Office", shipper, securityInfo, netWeight, grossWeight);
+        this.numOfMailSlots = numOfMailSlots;
+        this.maxWeightForMail = maxWeightForMail;
+    }
+
+    public double getMaxWeightForMail() {
+        return maxWeightForMail;
+    }
+
+    public int getNumOfMailSlots() {
+        return numOfMailSlots;
     }
 
     public boolean requiresElectricalConnection() {
