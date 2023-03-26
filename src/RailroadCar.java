@@ -322,15 +322,47 @@ public class RailroadCar {
                     + "\nMaximum Number of Compartments: " + baggageAndMail.getMaxCompartment()
                     + "\nRequires Electrical Connection: " + baggageAndMail.requiresElectricalConnection();
         } else if (this instanceof BasicFreight basicFreight) {
-            return ID + ". "
-                    + "Type: " + getType()
-                    + "\nShipper: " + getShipper()
-                    + "\nSecurity Info: " + getSecurityInfo()
-                    + "\nNet Weight: " + getNetWeight()
-                    + "\nGross Weight: " + getGrossWeight()
-                    + "\nType of Cargo: " + basicFreight.getTypeOfCargo()
-                    + "\nMaximum Weight Capacity for Cargo: " + basicFreight.getMaxWeightForCargo()
-                    + "\nRequires Electrical Connection: " + basicFreight.requiresElectricalConnection();
+            if (basicFreight instanceof Refrigerated refrigerated) {
+                return ID + ". "
+                        + "Type: " + getType()
+                        + "\nShipper: " + getShipper()
+                        + "\nSecurity Info: " + getSecurityInfo()
+                        + "\nNet Weight: " + getNetWeight()
+                        + "\nGross Weight: " + getGrossWeight()
+                        + "\nType of Cargo: " + refrigerated.getTypeOfCargo()
+                        + "\nMaximum Weight Capacity for Cargo: " + refrigerated.getMaxWeightForCargo()
+                        + "\nRequires Electrical Connection: " + refrigerated.requiresElectricalConnection();
+            } else if (basicFreight instanceof Liquid liquid) {
+                return ID + ". "
+                        + "Type: " + getType()
+                        + "\nShipper: " + getShipper()
+                        + "\nSecurity Info: " + getSecurityInfo()
+                        + "\nNet Weight: " + getNetWeight()
+                        + "\nGross Weight: " + getGrossWeight()
+                        + "\nType of Cargo: " + liquid.getTypeOfCargo()
+                        + "\nMaximum Weight Capacity for Cargo: " + liquid.getMaxWeightForCargo()
+                        + "\nRequires Electrical Connection: " + liquid.requiresElectricalConnection();
+            } else if (basicFreight instanceof Gaseous gaseous) {
+                return ID + ". "
+                        + "Type: " + getType()
+                        + "\nShipper: " + getShipper()
+                        + "\nSecurity Info: " + getSecurityInfo()
+                        + "\nNet Weight: " + getNetWeight()
+                        + "\nGross Weight: " + getGrossWeight()
+                        + "\nType of Cargo: " + gaseous.getTypeOfCargo()
+                        + "\nMaximum Weight Capacity for Cargo: " + gaseous.getMaxWeightForCargo()
+                        + "\nRequires Electrical Connection: " + gaseous.requiresElectricalConnection();
+            } else {
+                return ID + ". "
+                        + "Type: " + getType()
+                        + "\nShipper: " + getShipper()
+                        + "\nSecurity Info: " + getSecurityInfo()
+                        + "\nNet Weight: " + getNetWeight()
+                        + "\nGross Weight: " + getGrossWeight()
+                        + "\nType of Cargo: " + basicFreight.getTypeOfCargo()
+                        + "\nMaximum Weight Capacity for Cargo: " + basicFreight.getMaxWeightForCargo()
+                        + "\nRequires Electrical Connection: " + basicFreight.requiresElectricalConnection();
+            }
         } else if (this instanceof HeavyFreight heavyFreight) {
             if (heavyFreight instanceof LiquidToxic liquidToxic) {
                 return ID + ". "
@@ -341,8 +373,8 @@ public class RailroadCar {
                         + "\nGross Weight: " + getGrossWeight()
                         + "\nType of Cargo: " + liquidToxic.getTypeOfCargo()
                         + "\nMaximum Weight Capacity for Cargo: " + liquidToxic.getMaxWeightForCargo()
-                        + "\nPH Level: " + liquidToxic.getPHLevel()
-                        + "\nIs Flammable?: " + liquidToxic.flammability()
+                        + "\nPH Level of the Liquid: " + liquidToxic.getPHLevel()
+                        + "\nDoes the Liquid Flammable: " + liquidToxic.flammability()
                         + "\nRequires Electrical Connection: " + liquidToxic.requiresElectricalConnection();
             } else if (heavyFreight instanceof Toxic toxic) {
                 return ID + ". "
