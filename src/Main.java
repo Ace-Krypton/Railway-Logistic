@@ -32,7 +32,6 @@ public class Main {
             input = scan.next();
 
             switch(input.toLowerCase(Locale.ROOT)) {
-                case "test1" -> RailroadCar.print();
                 case "test" -> railroadCar.createRailroadCar();
                 case "1" -> station.createStations(new RailwayStation());
                 case "2" -> locomotive.createLocomotives(new Locomotive());
@@ -48,6 +47,7 @@ public class Main {
     private static void menu() {
         System.out.println("[1] Create Railway Station");
         System.out.println("[2] Create Locomotive");
+        System.out.println("[3] Create Railroad Cars");
         System.out.println("[0] Exit");
     }
 }

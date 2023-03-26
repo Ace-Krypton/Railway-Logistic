@@ -81,7 +81,7 @@ public class RailroadCar {
                         [4] Bench seats""");
                 System.out.print("Choose the type of the seat: ");
                 String typeOfSeatInput = scan.next();
-                String typeOfSeat = "Default";
+                String typeOfSeat = "Reclining";
 
                 switch (typeOfSeatInput) {
                     case "1" -> typeOfSeat = "Reclining";
@@ -93,6 +93,7 @@ public class RailroadCar {
                 Passenger passenger = new Passenger(shipper, securityInfo,
                         netWeight, grossWeight, numberOfSeats, numberOfLuggageRacks, typeOfSeat);
                 railroadCars.add(passenger);
+                System.out.println("Passenger added successfully to the railroad cars");
             }
 
             case "2" -> {
@@ -103,6 +104,7 @@ public class RailroadCar {
                 PostOffice postOffice = new PostOffice(shipper, securityInfo, netWeight, grossWeight,
                         numOfMailSlots, maxWeightForMail);
                 railroadCars.add(postOffice);
+                System.out.println("Post Office added successfully to the railroad cars");
             }
 
             case "3" -> {
@@ -132,6 +134,7 @@ public class RailroadCar {
                 Restaurant restaurant = new Restaurant(shipper, securityInfo, netWeight, grossWeight,
                         numChairsAndTables, typeOfCuisine);
                 railroadCars.add(restaurant);
+                System.out.println("Restaurant added successfully to the railroad cars");
             }
 
             case "4" -> {
@@ -142,6 +145,7 @@ public class RailroadCar {
                 BaggageAndMail baggageAndMail = new BaggageAndMail(shipper, securityInfo, netWeight,
                         grossWeight, maxCompartment, maxWeightCapacity);
                 railroadCars.add(baggageAndMail);
+                System.out.println("Baggage and Mail added successfully to the railroad cars");
             }
 
             case "5" -> {
@@ -169,6 +173,7 @@ public class RailroadCar {
                 BasicFreight basicFreight = new BasicFreight(shipper, securityInfo, netWeight, grossWeight,
                         typeOfCargo, maxWeightForCargo);
                 railroadCars.add(basicFreight);
+                System.out.println("Basic Freight added successfully to the railroad cars");
             }
 
             case "6" -> {
@@ -196,11 +201,13 @@ public class RailroadCar {
                 HeavyFreight heavyFreight = new HeavyFreight(shipper, securityInfo, netWeight,
                         grossWeight, typeOfCargo, maxWeightForCargo);
                 railroadCars.add(heavyFreight);
+                System.out.println("Heavy Freight added successfully to the railroad cars");
             }
 
             case "7" -> {
                 RailroadCar railroadCar = new RailroadCar(type, shipper, securityInfo, netWeight, grossWeight);
                 railroadCars.add(railroadCar);
+                System.out.println("Standard added successfully to the railroad cars");
             }
 
             default -> System.out.println("Please, choose correct number\n");
