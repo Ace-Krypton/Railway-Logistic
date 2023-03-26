@@ -149,10 +149,16 @@ public class RailroadCar {
             }
 
             case "5" -> {
+                System.out.print("Enter the maximum weight capacity for cargo: ");
+                double maxWeightForCargo = scan.nextDouble();
+
                 System.out.println("""
                         [1] Bulk goods
                         [2] Packaged goods
-                        [3] Building materials""");
+                        [3] Building materials
+                        [4] Refrigerated
+                        [5] Liquid
+                        [6] Gaseous""");
                 System.out.print("Enter the type of cargo: ");
                 String typeOfCargoInput = scan.next();
                 String typeOfCargo = "Packaged goods";
@@ -161,12 +167,31 @@ public class RailroadCar {
                     case "1" -> typeOfCargo = "Bulk goods";
                     case "2" -> typeOfCargo = "Packaged goods";
                     case "3" -> typeOfCargo = "Building materials";
-                    case "4" -> typeOfCargo = "Chemicals";
-                    case "5" -> typeOfCargo = "Liquids";
-                }
 
-                System.out.print("Enter the maximum weight capacity for cargo: ");
-                double maxWeightForCargo = scan.nextDouble();
+                    case "4" -> {
+                        Refrigerated refrigerated = new Refrigerated(shipper, securityInfo, netWeight, grossWeight,
+                                typeOfCargo, maxWeightForCargo);
+                        railroadCars.add(refrigerated);
+                        System.out.println("Refrigerated added successfully to the railroad cars");
+                        return;
+                    }
+
+                    case "5" -> {
+                        Liquid liquid = new Liquid(shipper, securityInfo, netWeight, grossWeight,
+                                typeOfCargo, maxWeightForCargo);
+                        railroadCars.add(liquid);
+                        System.out.println("Liquid added successfully to the railroad cars");
+                        return;
+                    }
+
+                    case "6" -> {
+                        Gaseous gaseous = new Gaseous(shipper, securityInfo, netWeight, grossWeight,
+                                typeOfCargo, maxWeightForCargo);
+                        railroadCars.add(gaseous);
+                        System.out.println("Gaseous added successfully to the railroad cars");
+                        return;
+                    }
+                }
 
                 BasicFreight basicFreight = new BasicFreight(shipper, securityInfo, netWeight, grossWeight,
                         typeOfCargo, maxWeightForCargo);
@@ -175,12 +200,18 @@ public class RailroadCar {
             }
 
             case "6" -> {
+                System.out.print("Enter the maximum weight capacity for cargo: ");
+                double maxWeightForCargo = scan.nextDouble();
+
                 System.out.println("""
                         [1] Heavy machinery
                         [2] Vehicles
                         [3] Raw materials
                         [4] Aerospace components
-                        [5] Military equipment""");
+                        [5] Military equipment
+                        [6] Explosives
+                        [7] Toxic
+                        [8] Toxic Liquid""");
                 System.out.print("Enter the type of cargo: ");
                 String typeOfCargoInput = scan.next();
                 String typeOfCargo = "Heavy machinery";
@@ -191,10 +222,40 @@ public class RailroadCar {
                     case "3" -> typeOfCargo = "Raw materials";
                     case "4" -> typeOfCargo = "Aerospace components";
                     case "5" -> typeOfCargo = "Military equipment";
-                }
 
-                System.out.print("Enter the maximum weight capacity for cargo: ");
-                double maxWeightForCargo = scan.nextDouble();
+                    case "6" -> {
+                        Explosives explosives = new Explosives(shipper, securityInfo, netWeight, grossWeight,
+                                typeOfCargo, maxWeightForCargo);
+                        railroadCars.add(explosives);
+                        System.out.println("Explosives added successfully to the railroad cars");
+                        return;
+                    }
+
+                    case "7" -> {
+                        Toxic toxic = new Toxic(shipper, securityInfo, netWeight, grossWeight,
+                                typeOfCargo, maxWeightForCargo);
+                        railroadCars.add(toxic);
+                        System.out.println("Toxic added successfully to the railroad cars");
+                        return;
+                    }
+
+                    case "8" -> {
+                        System.out.print("Enter the PH level of the liquid (Ranges between 0-14): ");
+                        double phLevel = scan.nextDouble();
+
+                        System.out.println("Does the liquid flammable?\n" +
+                                "if \"yes\" input \"y\" if \"no\" input \"N\"");
+                        System.out.print("y/N > ");
+                        String input = scan.next();
+                        boolean isFlammable = input.equalsIgnoreCase("Y");
+
+                        LiquidToxic liquidToxic = new LiquidToxic(shipper, securityInfo, netWeight, grossWeight,
+                                typeOfCargo, maxWeightForCargo, isFlammable, phLevel);
+                        railroadCars.add(liquidToxic);
+                        System.out.println("Liquid Toxic added successfully to the railroad cars");
+                        return;
+                    }
+                }
 
                 HeavyFreight heavyFreight = new HeavyFreight(shipper, securityInfo, netWeight,
                         grossWeight, typeOfCargo, maxWeightForCargo);
