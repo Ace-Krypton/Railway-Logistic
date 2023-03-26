@@ -83,6 +83,16 @@ public class RailroadCar {
                 railroadCars.add(baggageAndMail);
             }
 
+            case "basic freight" -> {
+                BasicFreight basicFreight = new BasicFreight(shipper, securityInfo, netWeight, grossWeight);
+                railroadCars.add(basicFreight);
+            }
+
+            case "heavy freight" -> {
+                HeavyFreight heavyFreight = new HeavyFreight(shipper, securityInfo, netWeight, grossWeight);
+                railroadCars.add(heavyFreight);
+            }
+
             default -> {
                 RailroadCar railroadCar = new RailroadCar(type, shipper, securityInfo, netWeight, grossWeight);
                 railroadCars.add(railroadCar);
@@ -131,6 +141,22 @@ public class RailroadCar {
                     + "\nNet Weight: " + getNetWeight()
                     + "\nGross Weight: " + getGrossWeight()
                     + "\nRequires Electrical Connection: " + baggageAndMail.requiresElectricalConnection();
+        } else if (this instanceof BasicFreight basicFreight) {
+            return ID + ". "
+                    + "Type: " + getType()
+                    + "\nShipper: " + getShipper()
+                    + "\nSecurity Info: " + getSecurityInfo()
+                    + "\nNet Weight: " + getNetWeight()
+                    + "\nGross Weight: " + getGrossWeight()
+                    + "\nRequires Electrical Connection: " + basicFreight.requiresElectricalConnection();
+        } else if (this instanceof HeavyFreight heavyFreight) {
+            return ID + ". "
+                    + "Type: " + getType()
+                    + "\nShipper: " + getShipper()
+                    + "\nSecurity Info: " + getSecurityInfo()
+                    + "\nNet Weight: " + getNetWeight()
+                    + "\nGross Weight: " + getGrossWeight()
+                    + "\nRequires Electrical Connection: " + heavyFreight.requiresElectricalConnection();
         } else {
             return ID + ". "
                     + "Type: " + getType()
