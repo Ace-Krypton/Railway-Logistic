@@ -254,8 +254,14 @@ public class RailroadCar {
                     case "5" -> typeOfCargo = "Military equipment";
 
                     case "6" -> {
+                        System.out.print("Enter the sensitivity of the explosive: ");
+                        int sensitivity = scan.nextInt();
+
+                        System.out.print("Enter the blast radius of the explosive: ");
+                        double blastRadius = scan.nextDouble();
+
                         Explosives explosives = new Explosives(shipper, securityInfo, netWeight, grossWeight,
-                                typeOfCargo, maxWeightForCargo);
+                                typeOfCargo, maxWeightForCargo, sensitivity, blastRadius);
                         railroadCars.add(explosives);
                         System.out.println("Explosives added successfully to the railroad cars");
                         return;
@@ -447,6 +453,8 @@ public class RailroadCar {
                         + "\nGross Weight: " + getGrossWeight()
                         + "\nType of Cargo: " + toxic.getTypeOfCargo()
                         + "\nMaximum Weight Capacity for Cargo: " + toxic.getMaxWeightForCargo()
+                        + "\nHazardous Rating: " + toxic.getHazardousRating()
+                        + "\nDoes It Have Air Filteration System: " + toxic.doesHaveAirFilterationSystem()
                         + "\nRequires Electrical Connection: " + toxic.requiresElectricalConnection();
             } else if (heavyFreight instanceof Explosives explosives) {
                 return ID + ". "
@@ -457,6 +465,8 @@ public class RailroadCar {
                         + "\nGross Weight: " + getGrossWeight()
                         + "\nType of Cargo: " + explosives.getTypeOfCargo()
                         + "\nMaximum Weight Capacity for Cargo: " + explosives.getMaxWeightForCargo()
+                        + "\nExplosive Sensitivity: " + explosives.getSensitivity()
+                        + "\nBlast Radius: " + explosives.getBlastRadius()
                         + "\nRequires Electrical Connection: " + explosives.requiresElectricalConnection();
             } else {
                 return ID + ". "
