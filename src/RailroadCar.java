@@ -169,8 +169,17 @@ public class RailroadCar {
                     case "3" -> typeOfCargo = "Building materials";
 
                     case "4" -> {
+                        System.out.print("Enter the maximum temperature for refrigerator: ");
+                        double maxTemperature = scan.nextDouble();
+
+                        System.out.println("Does the car remote monitored?\n" +
+                                "if \"yes\" input \"y\" if \"no\" input \"N\"");
+                        System.out.print("y/N > ");
+                        String input = scan.next();
+                        boolean remoteMonitored = input.equalsIgnoreCase("Y");
+
                         Refrigerated refrigerated = new Refrigerated(shipper, securityInfo, netWeight, grossWeight,
-                                typeOfCargo, maxWeightForCargo);
+                                typeOfCargo, maxWeightForCargo, maxTemperature, remoteMonitored);
                         railroadCars.add(refrigerated);
                         System.out.println("Refrigerated added successfully to the railroad cars");
                         return;
@@ -331,6 +340,8 @@ public class RailroadCar {
                         + "\nGross Weight: " + getGrossWeight()
                         + "\nType of Cargo: " + refrigerated.getTypeOfCargo()
                         + "\nMaximum Weight Capacity for Cargo: " + refrigerated.getMaxWeightForCargo()
+                        + "\nMaximum Temperature Inside the Container: " + refrigerated.getMaxTemperature()
+                        + "\nDoes It Being Remotely Monitored: " + refrigerated.isRemoteMonitored()
                         + "\nRequires Electrical Connection: " + refrigerated.requiresElectricalConnection();
             } else if (basicFreight instanceof Liquid liquid) {
                 return ID + ". "
