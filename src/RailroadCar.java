@@ -69,7 +69,18 @@ public class RailroadCar {
             }
 
             case "post office" -> {
+                PostOffice postOffice = new PostOffice(shipper, securityInfo, netWeight, grossWeight);
+                railroadCars.add(postOffice);
+            }
 
+            case "restaurant" -> {
+                Restaurant restaurant = new Restaurant(shipper, securityInfo, netWeight, grossWeight);
+                railroadCars.add(restaurant);
+            }
+
+            case "baggage and mail" -> {
+                BaggageAndMail baggageAndMail = new BaggageAndMail(shipper, securityInfo, netWeight, grossWeight);
+                railroadCars.add(baggageAndMail);
             }
 
             default -> {
@@ -96,6 +107,30 @@ public class RailroadCar {
                     + "\nGross Weight: " + getGrossWeight()
                     + "\nNumber of Seats: " + passenger.getNumSeats()
                     + "\nRequires Electrical Connection: " + passenger.requiresElectricalConnection();
+        } else if (this instanceof PostOffice postOffice) {
+            return ID + ". "
+                    + "Type: " + getType()
+                    + "\nShipper: " + getShipper()
+                    + "\nSecurity Info: " + getSecurityInfo()
+                    + "\nNet Weight: " + getNetWeight()
+                    + "\nGross Weight: " + getGrossWeight()
+                    + "\nRequires Electrical Connection: " + postOffice.requiresElectricalConnection();
+        } else if (this instanceof Restaurant restaurant) {
+            return ID + ". "
+                    + "Type: " + getType()
+                    + "\nShipper: " + getShipper()
+                    + "\nSecurity Info: " + getSecurityInfo()
+                    + "\nNet Weight: " + getNetWeight()
+                    + "\nGross Weight: " + getGrossWeight()
+                    + "\nRequires Electrical Connection: " + restaurant.requiresElectricalConnection();
+        } else if (this instanceof BaggageAndMail baggageAndMail) {
+            return ID + ". "
+                    + "Type: " + getType()
+                    + "\nShipper: " + getShipper()
+                    + "\nSecurity Info: " + getSecurityInfo()
+                    + "\nNet Weight: " + getNetWeight()
+                    + "\nGross Weight: " + getGrossWeight()
+                    + "\nRequires Electrical Connection: " + baggageAndMail.requiresElectricalConnection();
         } else {
             return ID + ". "
                     + "Type: " + getType()
