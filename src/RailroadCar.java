@@ -152,9 +152,7 @@ public class RailroadCar {
                 System.out.println("""
                         [1] Bulk goods
                         [2] Packaged goods
-                        [3] Building materials
-                        [4] Chemicals
-                        [5] Liquids""");
+                        [3] Building materials""");
                 System.out.print("Enter the type of cargo: ");
                 String typeOfCargoInput = scan.next();
                 String typeOfCargo = "Packaged goods";

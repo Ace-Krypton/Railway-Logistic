@@ -32,9 +32,9 @@ public class Main {
             input = scan.next();
 
             switch(input.toLowerCase(Locale.ROOT)) {
-                case "test" -> railroadCar.createRailroadCar();
                 case "1" -> station.createStations(new RailwayStation());
                 case "2" -> locomotive.createLocomotives(new Locomotive());
+                case "3" -> railroadCar.createRailroadCar();
                 case "0" -> {
                     System.out.println("exiting...");
                     loop = false;
