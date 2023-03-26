@@ -48,8 +48,6 @@ public class RailroadCar {
     }
 
     public void createRailroadCar() {
-        System.out.print("Enter the type: ");
-        String type = scan.next();
         System.out.println("""
                 [1] Passenger
                 [2] Post Office
@@ -59,6 +57,8 @@ public class RailroadCar {
                 [6] Heavy Freight
                 [7] Default Railroad Car
                 """);
+        System.out.print("Enter the type: ");
+        String type = scan.next();
         System.out.print("Enter the shipper: ");
         String shipper = scan.next();
         System.out.print("Enter the security info: ");
