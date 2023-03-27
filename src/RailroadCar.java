@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class RailroadCar {
     private static final Scanner scan = new Scanner(System.in);
-    private static final ArrayList<RailroadCar> railroadCars = new ArrayList<>();
+    public static final ArrayList<RailroadCar> railroadCars = new ArrayList<>();
     private static int id = -1;
     public int ID;
     private String type;

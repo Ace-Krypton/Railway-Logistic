@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Locomotive {
     private final Scanner scan = new Scanner(System.in);
-    private static final ArrayList<Locomotive> locomotives = new ArrayList<>();
+    public static final ArrayList<Locomotive> locomotives = new ArrayList<>();
     private double speed = 100;
     private String name;
     private RailwayStation home;
@@ -67,6 +67,12 @@ public class Locomotive {
 
     public void setDestination(RailwayStation destination) {
         this.destination = destination;
+    }
+
+    public static void printLocomotives() {
+        for (Locomotive locomotive : locomotives) {
+            System.out.println(locomotive);
+        }
     }
 
     public void updateSpeed() {
