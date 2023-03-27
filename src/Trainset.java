@@ -48,6 +48,7 @@ public class Trainset {
 
                     System.out.print("> ");
                     String inputRailroad = scan.next();
+                    int railroadCount = 0;
                     boolean railroadCarLoop = true;
                     boolean foundRailroadCar = false;
 
@@ -56,13 +57,19 @@ public class Trainset {
                             if (Integer.parseInt(inputRailroad) == railroadCar.ID) {
                                 foundRailroadCar = true;
 
-                                if (locomotive.getMaxWeight() >= railroadCar.getGrossWeight()) {
+                                if (locomotive.getMaxWeight() >= railroadCar.getGrossWeight() &&
+                                        locomotive.getMaxRailroadCars() >= railroadCount) {
                                     trainsetRailroadCars.add(railroadCar);
+                                    RailroadCar.railroadCars.remove(railroadCar);
+                                    railroadCount++;
                                     System.out.println("Railroad car added successfully");
                                 }
-
                             } if (foundRailroadCar) {
-                                railroadCarLoop = false;
+                                System.out.println("Do you want to add more railroad cars?\n" +
+                                        "if \"yes\" input \"y\" if \"no\" input \"N\"");
+                                System.out.print("y/N > ");
+                                String input = scan.next();
+                                railroadCarLoop = input.equalsIgnoreCase("Y");
                             } else {
                                 System.out.println("Please, enter the ID correctly");
                                 System.out.print("> ");
