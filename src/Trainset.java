@@ -30,13 +30,13 @@ public class Trainset {
         Locomotive.printLocomotives();
 
         System.out.print("> ");
-        String input = scan.next();
+        String inputLocomotive = scan.next();
         boolean locomotiveLoop = true;
         boolean foundLocomotive = false;
 
         while (locomotiveLoop) {
             for (Locomotive locomotive : Locomotive.locomotives) {
-                if (Integer.parseInt(input) == locomotive.ID) {
+                if (Integer.parseInt(inputLocomotive) == locomotive.ID) {
                     foundLocomotive = true;
                     trainsetLocomotives.add(locomotive);
                     Locomotive.locomotives.remove(locomotive);
@@ -48,12 +48,26 @@ public class Trainset {
             } else {
                 System.out.println("Please, enter the ID correctly");
                 System.out.print("> ");
-                input = scan.next();
+                inputLocomotive = scan.next();
             }
         }
 
-        System.out.println("Choose the railroad car: ");
+        System.out.println("Choose the railroad car: [Enter the ID number]");
+        RailroadCar.printRailroadCars();
 
+        System.out.print("> ");
+        String inputRailroad = scan.next();
+        boolean railroadCarLoop = true;
+        boolean foundRailroadCar = false;
+
+        while (railroadCarLoop) {
+            for (RailroadCar railroadCar : RailroadCar.railroadCars) {
+                if (Integer.parseInt(inputRailroad) == railroadCar.ID) {
+                    foundRailroadCar = true;
+                    
+                }
+            }
+        }
     }
 
     public static void print() {

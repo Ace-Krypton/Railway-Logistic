@@ -333,7 +333,7 @@ public class RailroadCar {
         }
     }
 
-    public static void print() {
+    public static void printRailroadCars() {
         for (RailroadCar car : railroadCars) {
             System.out.println(car);
         }
