@@ -75,15 +75,6 @@ public class Locomotive {
     }
 
     public void createLocomotives(Locomotive locomotiveObjs) {
-        if (RailwayStation.stations.isEmpty() || (long) RailwayStation.stations.size() < 3) {
-            System.out.println(
-                    "You need to have at least 3 stations in the Railway\n" +
-                            "You only have " + (long) RailwayStation.stations.size() +
-                            ", create stations with option number [1]\n"
-            );
-            return;
-        }
-
         int inputInt;
         boolean homeLoop = true;
         boolean foundHomeStation = false;
@@ -190,7 +181,7 @@ public class Locomotive {
             }
         }
 
-        System.out.println("[ " + locomotiveObjs + " added successfully to the Locomotives" + " ]\n");
+        System.out.println(locomotiveObjs + " added successfully to the Locomotives\n");
         locomotives.add(locomotiveObjs);
     }
 

@@ -15,7 +15,7 @@ public class Main {
     ended at 9:29
     Fourth Day of the project:
     started at 4:13
-    ended at ?
+    ended at 8:00
     */
     static RailwayStation station = new RailwayStation();
     static Locomotive locomotive = new Locomotive();
@@ -34,7 +34,17 @@ public class Main {
             switch(input.toLowerCase(Locale.ROOT)) {
                 case "test" -> RailroadCar.print();
                 case "1" -> station.createStations(new RailwayStation());
-                case "2" -> locomotive.createLocomotives(new Locomotive());
+                case "2" -> {
+                    if (RailwayStation.stations.isEmpty() || (long) RailwayStation.stations.size() < 3) {
+                        System.out.println(
+                                "You need to have at least 3 stations in the Railway\n" +
+                                        "You only have " + (long) RailwayStation.stations.size() +
+                                        ", create stations with option number [1]\n"
+                        );
+                        return;
+                    }
+                    locomotive.createLocomotives(new Locomotive());
+                }
                 case "3" -> railroadCar.createRailroadCar();
                 case "0" -> {
                     System.out.println("exiting...");
