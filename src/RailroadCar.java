@@ -93,7 +93,7 @@ public class RailroadCar {
                 Passenger passenger = new Passenger(shipper, securityInfo,
                         netWeight, grossWeight, numberOfSeats, numberOfLuggageRacks, typeOfSeat);
                 railroadCars.add(passenger);
-                System.out.println("Passenger added successfully to the railroad cars");
+                System.out.println("Passenger added successfully to the railroad cars\n");
             }
 
             case "2" -> {
@@ -104,7 +104,7 @@ public class RailroadCar {
                 PostOffice postOffice = new PostOffice(shipper, securityInfo, netWeight, grossWeight,
                         numOfMailSlots, maxWeightForMail);
                 railroadCars.add(postOffice);
-                System.out.println("Post Office added successfully to the railroad cars");
+                System.out.println("Post Office added successfully to the railroad cars\n");
             }
 
             case "3" -> {
@@ -134,7 +134,7 @@ public class RailroadCar {
                 Restaurant restaurant = new Restaurant(shipper, securityInfo, netWeight, grossWeight,
                         numChairsAndTables, typeOfCuisine);
                 railroadCars.add(restaurant);
-                System.out.println("Restaurant added successfully to the railroad cars");
+                System.out.println("Restaurant added successfully to the railroad cars\n");
             }
 
             case "4" -> {
@@ -145,7 +145,7 @@ public class RailroadCar {
                 BaggageAndMail baggageAndMail = new BaggageAndMail(shipper, securityInfo, netWeight,
                         grossWeight, maxCompartment, maxWeightCapacity);
                 railroadCars.add(baggageAndMail);
-                System.out.println("Baggage and Mail added successfully to the railroad cars");
+                System.out.println("Baggage and Mail added successfully to the railroad cars\n");
             }
 
             case "5" -> {
@@ -181,7 +181,7 @@ public class RailroadCar {
                         Refrigerated refrigerated = new Refrigerated(shipper, securityInfo, netWeight, grossWeight,
                                 typeOfCargo, maxWeightForCargo, maxTemperature, remoteMonitored);
                         railroadCars.add(refrigerated);
-                        System.out.println("Refrigerated added successfully to the railroad cars");
+                        System.out.println("Refrigerated added successfully to the railroad cars\n");
                         return;
                     }
 
@@ -201,7 +201,7 @@ public class RailroadCar {
                         Liquid liquid = new Liquid(shipper, securityInfo, netWeight, grossWeight,
                                 typeOfCargo, maxWeightForCargo, freezingPoint, isFlammable, phLevel);
                         railroadCars.add(liquid);
-                        System.out.println("Liquid added successfully to the railroad cars");
+                        System.out.println("Liquid added successfully to the railroad cars\n");
                         return;
                     }
 
@@ -218,7 +218,7 @@ public class RailroadCar {
                         Gaseous gaseous = new Gaseous(shipper, securityInfo, netWeight, grossWeight,
                                 typeOfCargo, maxWeightForCargo, pressureRating, gasDetectionSystem);
                         railroadCars.add(gaseous);
-                        System.out.println("Gaseous added successfully to the railroad cars");
+                        System.out.println("Gaseous added successfully to the railroad cars\n");
                         return;
                     }
                 }
@@ -226,7 +226,7 @@ public class RailroadCar {
                 BasicFreight basicFreight = new BasicFreight(shipper, securityInfo, netWeight, grossWeight,
                         typeOfCargo, maxWeightForCargo);
                 railroadCars.add(basicFreight);
-                System.out.println("Basic Freight added successfully to the railroad cars");
+                System.out.println("Basic Freight added successfully to the railroad cars\n");
             }
 
             case "6" -> {
@@ -281,7 +281,7 @@ public class RailroadCar {
                         Toxic toxic = new Toxic(shipper, securityInfo, netWeight, grossWeight,
                                 typeOfCargo, maxWeightForCargo, hazardousRating, doesHaveAirFilterationSystem);
                         railroadCars.add(toxic);
-                        System.out.println("Toxic added successfully to the railroad cars");
+                        System.out.println("Toxic added successfully to the railroad cars\n");
                         return;
                     }
 
@@ -312,7 +312,7 @@ public class RailroadCar {
                         LiquidToxic liquidToxic = new LiquidToxic(shipper, securityInfo, netWeight, grossWeight,
                                 typeOfCargo, maxWeightForCargo, isFlammable, phLevel, packagingType);
                         railroadCars.add(liquidToxic);
-                        System.out.println("Liquid Toxic added successfully to the railroad cars");
+                        System.out.println("Liquid Toxic added successfully to the railroad cars\n");
                         return;
                     }
                 }
@@ -320,13 +320,13 @@ public class RailroadCar {
                 HeavyFreight heavyFreight = new HeavyFreight(shipper, securityInfo, netWeight,
                         grossWeight, typeOfCargo, maxWeightForCargo);
                 railroadCars.add(heavyFreight);
-                System.out.println("Heavy Freight added successfully to the railroad cars");
+                System.out.println("Heavy Freight added successfully to the railroad cars\n");
             }
 
             case "7" -> {
                 RailroadCar railroadCar = new RailroadCar(type, shipper, securityInfo, netWeight, grossWeight);
                 railroadCars.add(railroadCar);
-                System.out.println("Standard added successfully to the railroad cars");
+                System.out.println("Standard added successfully to the railroad cars\n");
             }
 
             default -> System.out.println("Please, choose correct number\n");

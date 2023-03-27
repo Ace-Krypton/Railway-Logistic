@@ -26,7 +26,7 @@ public class Trainset {
         String name = scan.next();
         trainsetObj.setName(name);
 
-        System.out.print("Choose the locomotive: [Enter the ID number]");
+        System.out.println("Choose the locomotive: [Enter the ID number]");
         Locomotive.printLocomotives();
 
         System.out.print("> ");
