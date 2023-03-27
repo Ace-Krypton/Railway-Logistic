@@ -16,6 +16,9 @@ public class Main {
     Fourth Day of the project:
     started at 4:13
     ended at 8:00
+    Fifth Day of the project:
+    started at 6:20
+    ended at ?
     */
     static RailwayStation station = new RailwayStation();
     static Locomotive locomotive = new Locomotive();
@@ -41,7 +44,7 @@ public class Main {
                                         "You only have " + (long) RailwayStation.stations.size() +
                                         ", create stations with option number [1]\n"
                         );
-                        return;
+                        break;
                     }
                     locomotive.createLocomotives(new Locomotive());
                 }
