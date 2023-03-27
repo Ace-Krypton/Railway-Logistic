@@ -6,7 +6,7 @@ public class RailroadCar {
     public static final ArrayList<RailroadCar> railroadCars = new ArrayList<>();
     private static int id = -1;
     public int ID;
-    private String type;
+    private String type = "Standard";
     private String shipper;
     private String securityInfo;
     private double netWeight;

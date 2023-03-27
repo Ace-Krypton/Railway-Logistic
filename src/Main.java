@@ -18,7 +18,7 @@ public class Main {
     ended at 8:00
     Fifth Day of the project:
     started at 6:20
-    ended at ?
+    ended at 8:38
     */
     static RailwayStation station = new RailwayStation();
     static Locomotive locomotive = new Locomotive();
