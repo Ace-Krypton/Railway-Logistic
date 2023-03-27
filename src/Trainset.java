@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Trainset {
     private static final Scanner scan = new Scanner(System.in);
-    public static final ArrayList<Object> trainsets = new ArrayList<>();
+    public static final ArrayList<Locomotive> trainsetLocomotives = new ArrayList<>();
     private String name;
     private static int id;
     public int ID;
@@ -38,7 +38,7 @@ public class Trainset {
             for (Locomotive locomotive : Locomotive.locomotives) {
                 if (Integer.parseInt(input) == locomotive.ID) {
                     foundLocomotive = true;
-                    trainsets.add(locomotive);
+                    trainsetLocomotives.add(locomotive);
                     Locomotive.locomotives.remove(locomotive);
                     System.out.println(locomotive.getName() + " added successfully to the Locomotive\n");
                     break;
@@ -51,10 +51,13 @@ public class Trainset {
                 input = scan.next();
             }
         }
+
+        System.out.println("Choose the railroad car: ");
+
     }
 
     public static void print() {
-        for (Object trainset : trainsets) {
+        for (Locomotive trainset : trainsetLocomotives) {
             System.out.println(trainset);
         }
     }

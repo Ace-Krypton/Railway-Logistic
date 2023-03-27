@@ -33,6 +33,18 @@ public class Locomotive {
         ID = id;
     }
 
+    public int getMaxRailroadCars() {
+        return maxRailroadCars;
+    }
+
+    public double getMaxWeight() {
+        return maxWeight;
+    }
+
+    public int getMaxElectricalGrid() {
+        return maxElectricalGrid;
+    }
+
     public double getSpeed() {
         return this.speed;
     }
@@ -197,6 +209,9 @@ public class Locomotive {
                 + "Name: " + getName()
                 + "\nHome: " + getHome().getName()
                 + "\nSource: " + getSource().getName()
-                + "\nDestination: " + getDestination().getName();
+                + "\nDestination: " + getDestination().getName()
+                + "\nMaximum Railroad Cars: " + getMaxRailroadCars()
+                + "\nMaximum Weight: " + getMaxWeight()
+                + "\nMaximum Railroad Cars with Electrical Grid: " + getMaxElectricalGrid();
     }
 }
