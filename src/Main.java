@@ -39,7 +39,7 @@ public class Main {
             input = scan.next();
 
             switch(input.toLowerCase(Locale.ROOT)) {
-                case "test1" -> Trainset.printRailroadCars();
+                case "test1" -> Trainset.printTrainsets();
 
                 case "1" -> station.createStations(new RailwayStation());
 
