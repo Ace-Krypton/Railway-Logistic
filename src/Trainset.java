@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -98,12 +97,18 @@ public class Trainset {
         trainsets.add(trainsetObj);
     }
 
+    public static void print() {
+        for (Trainset trainset : trainsets) {
+            System.out.println(trainset);
+        }
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(ID).append(". ")
                 .append("Name: ").append(getName()).append("\n")
-                .append("Locomotive: ").append(this.locomotive).append("\n")
+                .append("Locomotive: [").append(this.locomotive).append("]\n")
                 .append("Railroad Cars: [");
         for (int i = 0; i < this.trainsetRailroadCars.size(); i++) {
             sb.append(this.trainsetRailroadCars.get(i));
