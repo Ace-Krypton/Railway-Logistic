@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Trainset {
     private static final Scanner scan = new Scanner(System.in);
     public static ArrayList<Trainset> trainsets = new ArrayList<>();
-    private final ArrayList<RailroadCar> trainsetRailroadCars = new ArrayList<>();
+    private final ArrayList<RailroadCar> railroadCars = new ArrayList<>();
     private Locomotive locomotive;
     private String name;
     private static int id = -1;
@@ -64,7 +64,7 @@ public class Trainset {
                                         locomotive.getMaxElectricalGrid() >= electricalGridCount + 1) {
                                     if (railroadCar.isRequiresElecticalGrid()) electricalGridCount++;
                                     weight += railroadCar.getGrossWeight();
-                                    trainsetObj.trainsetRailroadCars.add(railroadCar);
+                                    trainsetObj.railroadCars.add(railroadCar);
                                     RailroadCar.railroadCars.remove(railroadCar);
                                     railroadCount++;
                                     System.out.println("Railroad car added successfully");
@@ -100,18 +100,18 @@ public class Trainset {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(ID).append(". ")
+        StringBuilder builder = new StringBuilder();
+        builder.append(ID).append(". ")
                 .append("Name: ").append(getName()).append("\n")
                 .append("Locomotive: \n[").append(this.locomotive).append("]\n")
                 .append("Railroad Cars: \n[");
-        for (int i = 0; i < this.trainsetRailroadCars.size(); i++) {
-            sb.append(this.trainsetRailroadCars.get(i));
-            if (i != this.trainsetRailroadCars.size() - 1) {
-                sb.append(", ");
+        for (int i = 0; i < this.railroadCars.size(); i++) {
+            builder.append(this.railroadCars.get(i));
+            if (i != this.railroadCars.size() - 1) {
+                builder.append(", ");
             }
         }
-        sb.append("]");
-        return sb.toString();
+        builder.append("]");
+        return builder.toString();
     }
 }
