@@ -45,6 +45,8 @@ public class Trainset {
 
                     boolean railroadCarLoop = true;
                     int railroadCount = 0;
+                    int electricalGridCount = 0;
+                    double weight = 0;
 
                     while (railroadCarLoop) {
                         System.out.println("Choose the railroad car: [Enter the ID number]");
@@ -56,7 +58,10 @@ public class Trainset {
                             if (Integer.parseInt(inputRailroad) == railroadCar.ID) {
                                 foundRailroadCar = true;
                                 if (locomotive.getMaxWeight() >= railroadCar.getGrossWeight() &&
-                                        locomotive.getMaxRailroadCars() >= railroadCount + 1) {
+                                        locomotive.getMaxWeight()  >= weight + 1 &&
+                                        locomotive.getMaxRailroadCars() >= railroadCount + 1 &&
+                                        locomotive.getMaxElectricalGrid() >= electricalGridCount + 1) {
+                                    weight += railroadCar.getGrossWeight();
                                     trainsetRailroadCars.add(railroadCar);
                                     RailroadCar.railroadCars.remove(railroadCar);
                                     railroadCount++;
