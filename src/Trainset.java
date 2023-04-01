@@ -3,8 +3,8 @@ import java.util.Scanner;
 
 public class Trainset {
     private static final Scanner scan = new Scanner(System.in);
-    public static final ArrayList<Locomotive> trainsetLocomotives = new ArrayList<>();
-    public static final ArrayList<RailroadCar> trainsetRailroadCars = new ArrayList<>();
+    private Locomotive locomotive;
+    private final ArrayList<RailroadCar> trainsetRailroadCars = new ArrayList<>();
     private String name;
     private static int id;
     public int ID;
@@ -39,7 +39,7 @@ public class Trainset {
             for (Locomotive locomotive : Locomotive.locomotives) {
                 if (Integer.parseInt(inputLocomotive) == locomotive.ID) {
                     foundLocomotive = true;
-                    trainsetLocomotives.add(locomotive);
+                    this.locomotive = locomotive;
                     Locomotive.locomotives.remove(locomotive);
                     System.out.println(locomotive.getName() + " added successfully to the Trainset\n");
 
@@ -95,15 +95,24 @@ public class Trainset {
         }
     }
 
-    public static void print() {
-        for (Locomotive trainset : trainsetLocomotives) {
-            System.out.println(trainset);
+    public RailroadCar printRailroadCars() {
+        for (RailroadCar railroadCar : trainsetRailroadCars) {
+            return railroadCar;
         }
+        return null;
     }
 
-    public static void printRailroadCars() {
-        for (RailroadCar railroadCar : trainsetRailroadCars) {
-            System.out.println(railroadCar);
-        }
+    @Override
+    public String toString() {
+        return ID + ". "
+                + "Trainset Name: " + getName()
+                + "\nLocomotive's Name: " + locomotive.getName()
+                + "\nLocomotive's Home: " + locomotive.getHome().getName()
+                + "\nLocomotive's Source: " + locomotive.getSource().getName()
+                + "\nLocomotive's Destination: " + locomotive.getDestination().getName()
+                + "\nLocomotive's Maximum Railroad Cars: " + locomotive.getMaxRailroadCars()
+                + "\nLocomotive's Maximum Weight: " + locomotive.getMaxWeight()
+                + "\nLocomotive's Maximum Railroad Cars with Electrical Grid: " + locomotive.getMaxElectricalGrid()
+                + "\nConnected Railroad Car's list" + printRailroadCars();
     }
 }

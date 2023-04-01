@@ -39,7 +39,6 @@ public class Main {
             input = scan.next();
 
             switch(input.toLowerCase(Locale.ROOT)) {
-                case "test" -> Trainset.print();
                 case "test1" -> Trainset.printRailroadCars();
 
                 case "1" -> station.createStations(new RailwayStation());
