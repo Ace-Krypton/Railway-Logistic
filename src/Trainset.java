@@ -56,7 +56,7 @@ public class Trainset {
                             if (Integer.parseInt(inputRailroad) == railroadCar.ID) {
                                 foundRailroadCar = true;
                                 if (locomotive.getMaxWeight() >= railroadCar.getGrossWeight() &&
-                                        locomotive.getMaxRailroadCars() >= railroadCount+1) {
+                                        locomotive.getMaxRailroadCars() >= railroadCount + 1) {
                                     trainsetRailroadCars.add(railroadCar);
                                     RailroadCar.railroadCars.remove(railroadCar);
                                     railroadCount++;
