@@ -99,14 +99,7 @@ public class Trainset {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Trainset: ");
-        for (RailroadCar car : trainsetRailroadCars) {
-            sb.append(car.toString());
-            sb.append(", ");
-        }
-        sb.delete(sb.length() - 2, sb.length());
-        return sb.toString();
+        return ID + ". "
+                + "Name: " + getName();
     }
-
 }
