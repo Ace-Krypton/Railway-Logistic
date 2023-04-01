@@ -61,6 +61,7 @@ public class Trainset {
                                         locomotive.getMaxWeight()  >= weight + 1 &&
                                         locomotive.getMaxRailroadCars() >= railroadCount + 1 &&
                                         locomotive.getMaxElectricalGrid() >= electricalGridCount + 1) {
+                                    if (railroadCar.isRequiresElecticalGrid()) electricalGridCount++;
                                     weight += railroadCar.getGrossWeight();
                                     trainsetRailroadCars.add(railroadCar);
                                     RailroadCar.railroadCars.remove(railroadCar);

@@ -11,13 +11,15 @@ public class RailroadCar {
     private String securityInfo;
     private double netWeight;
     private double grossWeight;
+    private boolean requiresElecticalGrid;
 
     public RailroadCar() {
         ++id;
         ID = id;
     }
 
-    public RailroadCar(String type, String shipper, String securityInfo, double netWeight, double grossWeight) {
+    public RailroadCar(String type, String shipper, String securityInfo, double netWeight, double grossWeight,
+                       boolean requiresElecticalGrid) {
         ++id;
         ID = id;
         this.type = type;
@@ -25,6 +27,7 @@ public class RailroadCar {
         this.securityInfo = securityInfo;
         this.netWeight = netWeight;
         this.grossWeight = grossWeight;
+        this.requiresElecticalGrid = requiresElecticalGrid;
     }
 
     public String getType() {
@@ -45,6 +48,9 @@ public class RailroadCar {
 
     public double getGrossWeight() {
         return grossWeight;
+    }
+    public boolean isRequiresElecticalGrid() {
+        return requiresElecticalGrid;
     }
 
     public void createRailroadCar() {
@@ -324,7 +330,7 @@ public class RailroadCar {
             }
 
             case "7" -> {
-                RailroadCar railroadCar = new RailroadCar(type, shipper, securityInfo, netWeight, grossWeight);
+                RailroadCar railroadCar = new RailroadCar(type, shipper, securityInfo, netWeight, grossWeight, false);
                 railroadCars.add(railroadCar);
                 System.out.println("Standard added successfully to the railroad cars\n");
             }
@@ -485,7 +491,8 @@ public class RailroadCar {
                     + "\nShipper: " + getShipper()
                     + "\nSecurity Info: " + getSecurityInfo()
                     + "\nNet Weight: " + getNetWeight()
-                    + "\nGross Weight: " + getGrossWeight();
+                    + "\nGross Weight: " + getGrossWeight()
+                    + "\nRequires Electrical Connection: " + isRequiresElecticalGrid();
         }
     }
 }

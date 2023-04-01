@@ -4,7 +4,7 @@ public class Restaurant extends RailroadCar {
 
     public Restaurant(String shipper, String securityInfo, double netWeight, double grossWeight,
                       int numChairsAndTables, String typeOfCuisine) {
-        super("Restaurant", shipper, securityInfo, netWeight, grossWeight);
+        super("Restaurant", shipper, securityInfo, netWeight, grossWeight, false);
         this.numChairsAndTables = numChairsAndTables;
         this.typeOfCuisine = typeOfCuisine;
     }

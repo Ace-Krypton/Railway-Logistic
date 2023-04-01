@@ -4,7 +4,7 @@ public class HeavyFreight extends RailroadCar {
 
     public HeavyFreight(String shipper, String securityInfo, double netWeight,
                         double grossWeight, String typeOfCargo, double maxWeightForCargo) {
-        super("Heavy Freight", shipper, securityInfo, netWeight, grossWeight);
+        super("Heavy Freight", shipper, securityInfo, netWeight, grossWeight, false);
         this.typeOfCargo = typeOfCargo;
         this.maxWeightForCargo = maxWeightForCargo;
     }

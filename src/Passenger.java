@@ -5,7 +5,7 @@ public class Passenger extends RailroadCar {
 
     public Passenger(String shipper, String securityInfo, double netWeight, double grossWeight,
                      int numSeats, int numLuggageRacks, String typeOfSeat) {
-        super("Passenger", shipper, securityInfo, netWeight, grossWeight);
+        super("Passenger", shipper, securityInfo, netWeight, grossWeight, true);
         this.numSeats = numSeats;
         this.numLuggageRacks = numLuggageRacks;
         this.typeOfSeat = typeOfSeat;

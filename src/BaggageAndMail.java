@@ -4,7 +4,7 @@ public class BaggageAndMail extends RailroadCar {
 
     public BaggageAndMail(String shipper, String securityInfo, double netWeight,
                           double grossWeight, int maxCompartment, double maxWeightCapacity) {
-        super("Baggage And Mail", shipper, securityInfo, netWeight, grossWeight);
+        super("Baggage And Mail", shipper, securityInfo, netWeight, grossWeight, false);
         this.maxCompartment = maxCompartment;
         this.maxWeightCapacity = maxWeightCapacity;
     }
