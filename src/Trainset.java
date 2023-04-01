@@ -95,12 +95,7 @@ public class Trainset {
             }
         }
         trainsets.add(trainsetObj);
-    }
-
-    public static void print() {
-        for (Trainset trainset : trainsets) {
-            System.out.println(trainset);
-        }
+        System.out.println(trainsetObj);
     }
 
     @Override
@@ -108,8 +103,8 @@ public class Trainset {
         StringBuilder sb = new StringBuilder();
         sb.append(ID).append(". ")
                 .append("Name: ").append(getName()).append("\n")
-                .append("Locomotive: [").append(this.locomotive).append("]\n")
-                .append("Railroad Cars: [");
+                .append("Locomotive: \n[").append(this.locomotive).append("]\n")
+                .append("Railroad Cars: \n[");
         for (int i = 0; i < this.trainsetRailroadCars.size(); i++) {
             sb.append(this.trainsetRailroadCars.get(i));
             if (i != this.trainsetRailroadCars.size() - 1) {
