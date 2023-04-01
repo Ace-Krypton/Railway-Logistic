@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -24,7 +23,6 @@ public class Main {
     started at 4:24
     ended at ?
     */
-    public static ArrayList<Trainset> trainsets = new ArrayList<>();
     static RailwayStation station = new RailwayStation();
     static Locomotive locomotive = new Locomotive();
     static RailroadCar railroadCar = new RailroadCar();
@@ -41,8 +39,7 @@ public class Main {
             input = scan.next();
 
             switch(input.toLowerCase(Locale.ROOT)) {
-                case "test1" -> printTrainsets();
-
+                case "test" -> System.out.println(trainset);
                 case "1" -> station.createStations(new RailwayStation());
 
                 case "2" -> {
@@ -80,12 +77,6 @@ public class Main {
                 }
                 default -> System.out.println("Please, choose correct number\n");
             }
-        }
-    }
-
-    public static void printTrainsets() {
-        for (Trainset trainset : Main.trainsets) {
-            System.out.println(trainset);
         }
     }
 

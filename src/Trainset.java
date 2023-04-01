@@ -3,10 +3,10 @@ import java.util.Scanner;
 
 public class Trainset {
     private static final Scanner scan = new Scanner(System.in);
-    ArrayList<RailroadCar> trainsetRailroadCars = new ArrayList<>();
-    ArrayList<Locomotive> trainsetLocomotives = new ArrayList<>();
+    private final ArrayList<RailroadCar> trainsetRailroadCars = new ArrayList<>();
+    private Locomotive locomotive;
     private String name;
-    private static int id = -1;
+    private static int id;
     public int ID;
 
     public Trainset() {
@@ -39,7 +39,7 @@ public class Trainset {
             for (Locomotive locomotive : Locomotive.locomotives) {
                 if (Integer.parseInt(inputLocomotive) == locomotive.ID) {
                     foundLocomotive = true;
-                    trainsetLocomotives.add(locomotive);
+                    this.locomotive = locomotive;
                     Locomotive.locomotives.remove(locomotive);
                     System.out.println(locomotive.getName() + " added successfully to the Trainset\n");
 
@@ -63,7 +63,7 @@ public class Trainset {
                                         locomotive.getMaxElectricalGrid() >= electricalGridCount + 1) {
                                     if (railroadCar.isRequiresElecticalGrid()) electricalGridCount++;
                                     weight += railroadCar.getGrossWeight();
-                                    trainsetRailroadCars.add(railroadCar);
+                                    this.trainsetRailroadCars.add(railroadCar);
                                     RailroadCar.railroadCars.remove(railroadCar);
                                     railroadCount++;
                                     System.out.println("Railroad car added successfully");
@@ -93,13 +93,13 @@ public class Trainset {
                 inputLocomotive = scan.next();
             }
         }
-        Main.trainsets.add(trainsetObj);
-        System.out.println("Added--------------------------------------------------");
     }
 
     @Override
     public String toString() {
         return ID + ". "
-                + "Name: " + getName();
+                + "Name: " + getName()
+                + "\nLocomotive: " + this.locomotive
+                + "\nRailroad Car:" + trainsetRailroadCars;
     }
 }
