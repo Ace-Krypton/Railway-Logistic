@@ -1,12 +1,14 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Trainset {
     private static final Scanner scan = new Scanner(System.in);
+    public static ArrayList<Trainset> trainsets = new ArrayList<>();
     private final ArrayList<RailroadCar> trainsetRailroadCars = new ArrayList<>();
     private Locomotive locomotive;
     private String name;
-    private static int id;
+    private static int id = -1;
     public int ID;
 
     public Trainset() {
@@ -39,7 +41,7 @@ public class Trainset {
             for (Locomotive locomotive : Locomotive.locomotives) {
                 if (Integer.parseInt(inputLocomotive) == locomotive.ID) {
                     foundLocomotive = true;
-                    this.locomotive = locomotive;
+                    trainsetObj.locomotive = locomotive;
                     Locomotive.locomotives.remove(locomotive);
                     System.out.println(locomotive.getName() + " added successfully to the Trainset\n");
 
@@ -63,7 +65,7 @@ public class Trainset {
                                         locomotive.getMaxElectricalGrid() >= electricalGridCount + 1) {
                                     if (railroadCar.isRequiresElecticalGrid()) electricalGridCount++;
                                     weight += railroadCar.getGrossWeight();
-                                    this.trainsetRailroadCars.add(railroadCar);
+                                    trainsetObj.trainsetRailroadCars.add(railroadCar);
                                     RailroadCar.railroadCars.remove(railroadCar);
                                     railroadCount++;
                                     System.out.println("Railroad car added successfully");
@@ -93,13 +95,23 @@ public class Trainset {
                 inputLocomotive = scan.next();
             }
         }
+        trainsets.add(trainsetObj);
     }
 
     @Override
     public String toString() {
-        return ID + ". "
-                + "Name: " + getName()
-                + "\nLocomotive: " + this.locomotive
-                + "\nRailroad Car:" + trainsetRailroadCars;
+        StringBuilder sb = new StringBuilder();
+        sb.append(ID).append(". ")
+                .append("Name: ").append(getName()).append("\n")
+                .append("Locomotive: ").append(this.locomotive).append("\n")
+                .append("Railroad Cars: [");
+        for (int i = 0; i < this.trainsetRailroadCars.size(); i++) {
+            sb.append(this.trainsetRailroadCars.get(i));
+            if (i != this.trainsetRailroadCars.size() - 1) {
+                sb.append(", ");
+            }
+        }
+        sb.append("]");
+        return sb.toString();
     }
 }
