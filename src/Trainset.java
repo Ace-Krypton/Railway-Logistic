@@ -3,11 +3,10 @@ import java.util.Scanner;
 
 public class Trainset {
     private static final Scanner scan = new Scanner(System.in);
-    public static ArrayList<Trainset> trainsets = new ArrayList<>();
-    private final ArrayList<RailroadCar> trainsetRailroadCars = new ArrayList<>();
-    private final ArrayList<Locomotive> trainsetLocomotives = new ArrayList<>();
+    ArrayList<RailroadCar> trainsetRailroadCars = new ArrayList<>();
+    ArrayList<Locomotive> trainsetLocomotives = new ArrayList<>();
     private String name;
-    private static int id;
+    private static int id = -1;
     public int ID;
 
     public Trainset() {
@@ -94,27 +93,20 @@ public class Trainset {
                 inputLocomotive = scan.next();
             }
         }
-        trainsets.add(trainsetObj);
-    }
-
-    public RailroadCar printRailroadCars() {
-        for (RailroadCar railroadCar : trainsetRailroadCars) {
-            return railroadCar;
-        }
-        return null;
-    }
-
-    public static void printTrainsets() {
-        for (Trainset trainset : trainsets) {
-            System.out.println(trainset);
-        }
+        Main.trainsets.add(trainsetObj);
+        System.out.println("Added--------------------------------------------------");
     }
 
     @Override
     public String toString() {
-        return ID + ". "
-                + "Trainset Name: " + getName()
-                + "\nConnected Locomotive: " + trainsetLocomotives.get(0)
-                + "\nConnected Railroad Car's list: " + printRailroadCars();
+        StringBuilder sb = new StringBuilder();
+        sb.append("Trainset: ");
+        for (RailroadCar car : trainsetRailroadCars) {
+            sb.append(car.toString());
+            sb.append(", ");
+        }
+        sb.delete(sb.length() - 2, sb.length());
+        return sb.toString();
     }
+
 }
