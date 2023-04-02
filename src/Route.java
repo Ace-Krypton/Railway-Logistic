@@ -66,8 +66,8 @@ public class Route {
                         String destination = trainset.getLocomotive().getDestination().getName();
                         routeObj.setDistance(distance(source, destination));
                         routeObj.setFromTo("From " + source + " to " + destination);
-                        System.out.println("Distance is: " + routeObj.getDistance());
-                        System.out.println("FromTO: " + routeObj.getFromTo());
+                        System.out.println("Calculated distance is: " + routeObj.getDistance() + "km");
+                        System.out.println(routeObj.getFromTo());
                     } if (foundTrainset) {
                         trainsetLoop = false;
                     } else {
@@ -83,6 +83,7 @@ public class Route {
             }
         }
 
+        System.out.println("Route added successfully to the route list");
         routes.add(routeObj);
     }
 }
