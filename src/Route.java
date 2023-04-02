@@ -33,17 +33,14 @@ public class Route {
     }
 
     public static int distance(String s1, String s2) {
-        int i = 0, j = 0;
-        int dist = 0;
+        int i = 0, j = 0, dist = 0;
         while (i < s1.length() && j < s2.length()) {
             char c1 = s1.charAt(i);
             char c2 = s2.charAt(j);
             if (c1 != c2) {
                 dist += Math.abs(distances.get(c1) - distances.get(c2));
                 break;
-            }
-            i++;
-            j++;
+            } i++; j++;
         }
         return dist;
     }
@@ -65,7 +62,7 @@ public class Route {
                         String source = trainset.getLocomotive().getSource().getName();
                         String destination = trainset.getLocomotive().getDestination().getName();
                         routeObj.setDistance(distance(source, destination));
-                        routeObj.setFromTo("From " + source + " to" + destination);
+                        routeObj.setFromTo("From " + source + " to " + destination);
                         System.out.println("Distance is: " + routeObj.getDistance());
                         System.out.println("FromTO: " + routeObj.getFromTo());
                     } if (foundTrainset) {
