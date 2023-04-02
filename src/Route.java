@@ -33,16 +33,17 @@ public class Route {
     }
 
     public static int distance(String s1, String s2) {
-        int i = 0, j = 0, dist = 0;
-        while (i < s1.length() && j < s2.length()) {
-            char c1 = s1.charAt(i);
-            char c2 = s2.charAt(j);
-            if (c1 != c2) {
-                dist += Math.abs(distances.get(c1) - distances.get(c2));
-                break;
-            } i++; j++;
+        if (s1 == null || s2 == null) {
+            throw new IllegalArgumentException("Input strings cannot be null.");
         }
-        return dist;
+        int distance = 0;
+        s1 = s1.toLowerCase();
+        s2 = s2.toLowerCase();
+        for (int i = 0; i < s1.length() && i < s2.length(); i++) {
+            distance += distances.getOrDefault(s1.charAt(i), 0) -
+                    distances.getOrDefault(s2.charAt(i), 0);
+        }
+        return Math.max(distance, 0);
     }
 
     public void generate(Route routeObj) {
