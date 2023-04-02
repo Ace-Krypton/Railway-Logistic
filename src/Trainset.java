@@ -104,6 +104,12 @@ public class Trainset {
         System.out.println(trainsetObj);
     }
 
+    public static void printTrainsets() {
+        for (Trainset trainset : trainsets) {
+            System.out.println(trainset);
+        }
+    }
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();

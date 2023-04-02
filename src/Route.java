@@ -1,7 +1,9 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class Route {
+    private static final Scanner scan = new Scanner(System.in);
     private static final Map<Character, Integer> distances = new HashMap<>();
 
     static {
@@ -13,6 +15,14 @@ public class Route {
     }
 
     private void travel() {
+        System.out.println("Choose the Trainset: [Enter the ID number]");
+        Trainset.printTrainsets();
 
+        System.out.print("> ");
+        String inputTrainset = scan.next();
+
+        for (Trainset trainset : Trainset.trainsets) {
+
+        }
     }
 }
