@@ -24,6 +24,22 @@ public class Route {
         this.distance = distance;
     }
 
+    public static int distance(String s1, String s2) {
+        int i = 0, j = 0;
+        int dist = 0;
+        while (i < s1.length() && j < s2.length()) {
+            char c1 = s1.charAt(i);
+            char c2 = s2.charAt(j);
+            if (c1 != c2) {
+                dist += Math.abs(distances.get(c1) - distances.get(c2));
+                break;
+            }
+            i++;
+            j++;
+        }
+        return dist;
+    }
+
     private void generate(Route routeObj) {
         System.out.println("Choose the Trainset: [Enter the ID number]");
         Trainset.printTrainsets();
@@ -38,11 +54,10 @@ public class Route {
                 for (Trainset trainset : Trainset.trainsets) {
                     if (Integer.parseInt(inputTrainset) == trainset.ID) {
                         foundTrainset = true;
-                        char source = trainset.getLocomotive().getSource().getName().charAt(0);
-                        char destination = trainset.getLocomotive().getDestination().getName().charAt(0);
-                        routeObj.setDistance(distances.get(destination) - distances.get(source));
-                        routeObj.setFromTo("From " + trainset.getLocomotive().getSource().getName() +
-                                " to" + trainset.getLocomotive().getDestination().getName());
+                        String source = trainset.getLocomotive().getSource().getName();
+                        String destination = trainset.getLocomotive().getDestination().getName();
+                        routeObj.setDistance(distance(source, destination));
+                        routeObj.setFromTo("From " + source + " to" + destination);
                     } if (foundTrainset) {
                         trainsetLoop = false;
                     } else {
