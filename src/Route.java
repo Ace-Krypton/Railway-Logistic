@@ -68,6 +68,14 @@ public class Route {
                         routeObj.setFromTo("From " + source + " to " + destination);
                         System.out.println("Calculated distance is: " + routeObj.getDistance() + "km");
                         System.out.println(routeObj.getFromTo());
+                        System.out.println("Are you ready for travel?\n" +
+                                "if \"yes\" input \"y\" if \"no\" input \"N\"");
+                        System.out.print("y/N > ");
+                        String input = scan.next();
+                        boolean isReady = input.equalsIgnoreCase("Y");
+                        if (isReady) routeObj.travel(routeObj.getDistance());
+                        else System.out.println("I will add something for no");
+
                     } if (foundTrainset) {
                         trainsetLoop = false;
                     } else {
@@ -85,5 +93,9 @@ public class Route {
 
         System.out.println("Route added successfully to the route list");
         routes.add(routeObj);
+    }
+
+    public void travel(int distance) {
+
     }
 }
