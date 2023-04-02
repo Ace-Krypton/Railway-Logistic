@@ -14,15 +14,34 @@ public class Route {
         }
     }
 
-    private void travel() {
+    private void travel(Route routeObj) {
         System.out.println("Choose the Trainset: [Enter the ID number]");
         Trainset.printTrainsets();
 
         System.out.print("> ");
         String inputTrainset = scan.next();
+        boolean trainsetLoop = true;
+        boolean foundTrainset = false;
 
-        for (Trainset trainset : Trainset.trainsets) {
+        while (trainsetLoop) {
+            try {
+                for (Trainset trainset : Trainset.trainsets) {
+                    if (Integer.parseInt(inputTrainset) == trainset.ID) {
+                        foundTrainset = true;
 
+                    } if (foundTrainset) {
+                        trainsetLoop = false;
+                    } else {
+                        System.out.println("Please, enter the ID correctly");
+                        System.out.print("> ");
+                        inputTrainset = scan.next();
+                    }
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a valid integer ID.");
+                System.out.print("> ");
+                inputTrainset = scan.next();
+            }
         }
     }
 }
