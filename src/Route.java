@@ -100,7 +100,7 @@ public class Route {
             Trainset.setOnRoute(true);
         }
 
-        for (int i = 0; i < distance; i += 10) {
+        for (int i = 0; i < distance; i += 2) {
             System.out.println("Travelling to station " + (i + 1) + " out of " + distance);
             Thread.sleep(1000);
         }
