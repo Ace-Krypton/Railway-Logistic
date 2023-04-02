@@ -6,6 +6,7 @@ public class Trainset {
     public static ArrayList<Trainset> trainsets = new ArrayList<>();
     private final ArrayList<RailroadCar> railroadCars = new ArrayList<>();
     private Locomotive locomotive;
+    private static boolean onRoute;
     private String name;
     private static int id = -1;
     public int ID;
@@ -26,6 +27,15 @@ public class Trainset {
     public void setName(String name) {
         this.name = name;
     }
+
+    public static boolean isOnRoute() {
+        return onRoute;
+    }
+
+    public static void setOnRoute(boolean onRoute) {
+        Trainset.onRoute = onRoute;
+    }
+
 
     public void createTrainsets(Trainset trainsetObj) {
         System.out.print("Enter the name of the trainset: ");

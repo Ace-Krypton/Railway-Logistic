@@ -87,7 +87,33 @@ public class Route {
         routes.add(routeObj);
     }
 
-    public void travel(int distance) {
+    public void travel(int distance) throws InterruptedException {
+        System.out.println("Starting travel from " + fromTo);
+        Thread.sleep(2000);
 
+        synchronized (Trainset.class) {
+            while (Trainset.isOnRoute()) {
+                System.out.println("Train is waiting for the route to be released...");
+                Trainset.class.wait();
+            }
+            Trainset.setOnRoute(true);
+        }
+
+        for (int i = 0; i < distance; i++) {
+            System.out.println("Travelling to station " + (i + 1) + " out of " + distance);
+            Thread.sleep(1000);
+        }
+
+        synchronized (Trainset.class) {
+            Trainset.setOnRoute(false);
+            Trainset.class.notifyAll();
+        }
+
+        System.out.println("Arrived at the destination station");
+        Thread.sleep(30000);
+
+        Route returnRoute = new Route();
+        returnRoute.generate(new Route());
+        returnRoute.travel(returnRoute.getDistance());
     }
 }
