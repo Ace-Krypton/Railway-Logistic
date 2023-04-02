@@ -48,7 +48,7 @@ public class Route {
         return Math.max(distance, 0);
     }
 
-    public void generate(Route routeObj) {
+    public void generate(Route routeObj) throws InterruptedException {
         System.out.println("Choose the Trainset: [Enter the ID number]");
         Trainset.printTrainsets();
 
@@ -68,6 +68,7 @@ public class Route {
                         routeObj.setFromTo("From " + source + " to " + destination);
                         System.out.println("Calculated distance is: " + routeObj.getDistance() + "km");
                         System.out.println(routeObj.getFromTo());
+                        routeObj.travel(routeObj.getDistance());
                     } if (foundTrainset) {
                         trainsetLoop = false;
                     } else {
@@ -99,7 +100,7 @@ public class Route {
             Trainset.setOnRoute(true);
         }
 
-        for (int i = 0; i < distance; i++) {
+        for (int i = 0; i < distance; i += 10) {
             System.out.println("Travelling to station " + (i + 1) + " out of " + distance);
             Thread.sleep(1000);
         }

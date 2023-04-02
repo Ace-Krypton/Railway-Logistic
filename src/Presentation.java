@@ -32,7 +32,7 @@ public class Presentation {
     static Trainset trainset = new Trainset();
     static Route route = new Route();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         String input;
         boolean loop = true;
         Scanner scan = new Scanner(System.in);
