@@ -1,8 +1,10 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 public class Route {
+    public static ArrayList<Route> routes = new ArrayList<>();
     private String fromTo;
     private int distance;
     private static final Scanner scan = new Scanner(System.in);
@@ -80,5 +82,7 @@ public class Route {
                 inputTrainset = scan.next();
             }
         }
+
+        routes.add(routeObj);
     }
 }
