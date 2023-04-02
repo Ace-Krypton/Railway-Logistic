@@ -1,25 +1,28 @@
-/**
- * @file Locomotive.java
- * @brief This file contains the implementation of Locomotive class and its methods.
- */
-
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-/**
- * @class Locomotive
- * @brief This class represents a Locomotive with its attributes and functionality.
- */
 public class Locomotive {
     private final Scanner scan = new Scanner(System.in);
     public static final ArrayList<Locomotive> locomotives = new ArrayList<>();
     private double speed = 100;
     private String name;
     private RailwayStation home;
+    private RailwayStation source;
+    private RailwayStation destination;
     private int maxRailroadCars;
     private double maxWeight;
     private int maxElectricalGrid;
+    private static int id = -1;
+    public int ID;
+    public Locomotive() {
+        ++id;
+        ID = id;
+    }
+
+    public int getMaxRailroadCars() {
+        return maxRailroadCars;
+    }
 
     public void setMaxRailroadCars(int maxRailroadCars) {
         this.maxRailroadCars = maxRailroadCars;
@@ -31,23 +34,6 @@ public class Locomotive {
 
     public void setMaxElectricalGrid(int maxElectricalGrid) {
         this.maxElectricalGrid = maxElectricalGrid;
-    }
-
-    private RailwayStation source;
-    private RailwayStation destination;
-    private static int id = -1;
-    public int ID;
-
-    /**
-     * @brief Default constructor for Locomotive class.
-     */
-    public Locomotive() {
-        ++id;
-        ID = id;
-    }
-
-    public int getMaxRailroadCars() {
-        return maxRailroadCars;
     }
 
     public double getMaxWeight() {

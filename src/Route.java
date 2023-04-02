@@ -3,6 +3,8 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Route {
+    private String fromTo;
+    private int distance;
     private static final Scanner scan = new Scanner(System.in);
     private static final Map<Character, Integer> distances = new HashMap<>();
 
@@ -14,7 +16,15 @@ public class Route {
         }
     }
 
-    private void travel(Route routeObj) {
+    public void setFromTo(String fromTo) {
+        this.fromTo = fromTo;
+    }
+
+    public void setDistance(int distance) {
+        this.distance = distance;
+    }
+
+    private void generate(Route routeObj) {
         System.out.println("Choose the Trainset: [Enter the ID number]");
         Trainset.printTrainsets();
 
@@ -28,7 +38,11 @@ public class Route {
                 for (Trainset trainset : Trainset.trainsets) {
                     if (Integer.parseInt(inputTrainset) == trainset.ID) {
                         foundTrainset = true;
-
+                        char source = trainset.getLocomotive().getSource().getName().charAt(0);
+                        char destination = trainset.getLocomotive().getDestination().getName().charAt(0);
+                        routeObj.setDistance(distances.get(destination) - distances.get(source));
+                        routeObj.setFromTo("From " + trainset.getLocomotive().getSource().getName() +
+                                " to" + trainset.getLocomotive().getDestination().getName());
                     } if (foundTrainset) {
                         trainsetLoop = false;
                     } else {

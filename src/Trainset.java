@@ -15,6 +15,10 @@ public class Trainset {
         ID = id;
     }
 
+    public Locomotive getLocomotive() {
+        return locomotive;
+    }
+
     public String getName() {
         return name;
     }
