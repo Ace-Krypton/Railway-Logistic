@@ -30,6 +30,7 @@ public class Presentation {
     static Locomotive locomotive = new Locomotive();
     static RailroadCar railroadCar = new RailroadCar();
     static Trainset trainset = new Trainset();
+    static Route route = new Route();
 
     public static void main(String[] args) {
         String input;
@@ -71,6 +72,14 @@ public class Presentation {
                         break;
                     }
                     trainset.createTrainsets(new Trainset());
+                }
+
+                case "5" -> {
+                    if (Trainset.trainsets.isEmpty()) {
+                        System.out.println("You need to have at least 1 trainset");
+                        break;
+                    }
+                    route.generate(new Route());
                 }
 
                 case "0" -> {
