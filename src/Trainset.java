@@ -37,59 +37,65 @@ public class Trainset {
         boolean foundLocomotive = false;
 
         while (locomotiveLoop) {
-            for (Locomotive locomotive : Locomotive.locomotives) {
-                if (Integer.parseInt(inputLocomotive) == locomotive.ID) {
-                    foundLocomotive = true;
-                    trainsetObj.locomotive = locomotive;
-                    Locomotive.locomotives.remove(locomotive);
-                    System.out.println(locomotive.getName() + " added successfully to the Trainset\n");
+            try {
+                for (Locomotive locomotive : Locomotive.locomotives) {
+                    if (Integer.parseInt(inputLocomotive) == locomotive.ID) {
+                        foundLocomotive = true;
+                        trainsetObj.locomotive = locomotive;
+                        Locomotive.locomotives.remove(locomotive);
+                        System.out.println(locomotive.getName() + " added successfully to the Trainset\n");
 
-                    boolean railroadCarLoop = true;
-                    int railroadCount = 0;
-                    int electricalGridCount = 0;
-                    double weight = 0;
+                        boolean railroadCarLoop = true;
+                        int railroadCount = 0;
+                        int electricalGridCount = 0;
+                        double weight = 0;
 
-                    while (railroadCarLoop) {
-                        System.out.println("Choose the railroad car: [Enter the ID number]");
-                        RailroadCar.printRailroadCars();
-                        System.out.print("> ");
-                        String inputRailroad = scan.next();
-                        boolean foundRailroadCar = false;
-                        for (RailroadCar railroadCar : RailroadCar.railroadCars) {
-                            if (Integer.parseInt(inputRailroad) == railroadCar.ID) {
-                                foundRailroadCar = true;
-                                if (locomotive.getMaxWeight() >= railroadCar.getGrossWeight() &&
-                                        locomotive.getMaxWeight()  >= weight + 1 &&
-                                        locomotive.getMaxRailroadCars() >= railroadCount + 1 &&
-                                        locomotive.getMaxElectricalGrid() >= electricalGridCount + 1) {
-                                    if (railroadCar.isRequiresElecticalGrid()) electricalGridCount++;
-                                    weight += railroadCar.getGrossWeight();
-                                    trainsetObj.railroadCars.add(railroadCar);
-                                    RailroadCar.railroadCars.remove(railroadCar);
-                                    railroadCount++;
-                                    System.out.println("Railroad car added successfully");
-                                } else {
-                                    System.out.println("This locomotive cannot pull this railroad car.");
+                        while (railroadCarLoop) {
+                            System.out.println("Choose the railroad car: [Enter the ID number]");
+                            RailroadCar.printRailroadCars();
+                            System.out.print("> ");
+                            String inputRailroad = scan.next();
+                            boolean foundRailroadCar = false;
+                            for (RailroadCar railroadCar : RailroadCar.railroadCars) {
+                                if (Integer.parseInt(inputRailroad) == railroadCar.ID) {
+                                    foundRailroadCar = true;
+                                    if (locomotive.getMaxWeight() >= railroadCar.getGrossWeight() &&
+                                            locomotive.getMaxWeight()  >= weight + 1 &&
+                                            locomotive.getMaxRailroadCars() >= railroadCount + 1 &&
+                                            locomotive.getMaxElectricalGrid() >= electricalGridCount + 1) {
+                                        if (railroadCar.isRequiresElecticalGrid()) electricalGridCount++;
+                                        weight += railroadCar.getGrossWeight();
+                                        trainsetObj.railroadCars.add(railroadCar);
+                                        RailroadCar.railroadCars.remove(railroadCar);
+                                        railroadCount++;
+                                        System.out.println("Railroad car added successfully");
+                                    } else {
+                                        System.out.println("This locomotive cannot pull this railroad car.");
+                                    }
+                                    break;
                                 }
-                                break;
                             }
+                            if (!foundRailroadCar) {
+                                System.out.println("Please, enter the ID correctly");
+                            }
+                            System.out.println("Do you want to add more railroad cars?\n" +
+                                    "if \"yes\" input \"y\" if \"no\" input \"N\"");
+                            System.out.print("y/N > ");
+                            String input = scan.next();
+                            railroadCarLoop = input.equalsIgnoreCase("Y");
                         }
-                        if (!foundRailroadCar) {
-                            System.out.println("Please, enter the ID correctly");
-                        }
-                        System.out.println("Do you want to add more railroad cars?\n" +
-                                "if \"yes\" input \"y\" if \"no\" input \"N\"");
-                        System.out.print("y/N > ");
-                        String input = scan.next();
-                        railroadCarLoop = input.equalsIgnoreCase("Y");
+                        break;
                     }
-                    break;
                 }
-            }
-            if (foundLocomotive) {
-                locomotiveLoop = false;
-            } else {
-                System.out.println("Please, enter the ID correctly");
+                if (foundLocomotive) {
+                    locomotiveLoop = false;
+                } else {
+                    System.out.println("Please, enter the ID correctly");
+                    System.out.print("> ");
+                    inputLocomotive = scan.next();
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a valid integer ID.");
                 System.out.print("> ");
                 inputLocomotive = scan.next();
             }

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Locomotive {
@@ -101,18 +102,33 @@ public class Locomotive {
         String inputStr = scan.next();
         locomotiveObjs.setName(inputStr);
 
-        System.out.print("Enter the maximum number of railroad cars: ");
-        inputInt = scan.nextInt();
-        locomotiveObjs.setMaxRailroadCars(inputInt);
+        try {
+            System.out.print("Enter the maximum number of railroad cars: ");
+            inputInt = scan.nextInt();
+            locomotiveObjs.setMaxRailroadCars(inputInt);
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter an integer.");
+            scan.next();
+        }
 
-        System.out.print("Enter the maximum weight for transported load: ");
-        double maxWeight;
-        maxWeight = scan.nextDouble();
-        locomotiveObjs.setMaxWeight(maxWeight);
+        try {
+            System.out.print("Enter the maximum weight for transported load: ");
+            double maxWeight;
+            maxWeight = scan.nextDouble();
+            locomotiveObjs.setMaxWeight(maxWeight);
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter a double.");
+            scan.next();
+        }
 
-        System.out.print("Enter the maximum number of railroad cars that need to be connected to the electricity grid: ");
-        inputInt = scan.nextInt();
-        locomotiveObjs.setMaxElectricalGrid(inputInt);
+        try {
+            System.out.print("Enter the maximum number of railroad cars that need to be connected to the electricity grid: ");
+            inputInt = scan.nextInt();
+            locomotiveObjs.setMaxElectricalGrid(inputInt);
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter an integer.");
+            scan.next();
+        }
 
         System.out.println("Choose the home railway station: [Enter the ID number]");
         RailwayStation.printStations();
@@ -121,20 +137,28 @@ public class Locomotive {
         inputInt = scan.nextInt();
 
         while (homeLoop) {
-            for (RailwayStation station : RailwayStation.stations) {
-                if (inputInt == station.ID) {
-                    foundHomeStation = true;
-                    locomotiveObjs.setHome(station);
-                    RailwayStation.stations.remove(station);
-                    System.out.println(station.getName() + " added successfully to the Locomotive\n");
-                    break;
+            try {
+                for (RailwayStation station : RailwayStation.stations) {
+                    if (inputInt == station.ID) {
+                        foundHomeStation = true;
+                        locomotiveObjs.setHome(station);
+                        RailwayStation.stations.remove(station);
+                        System.out.println(station.getName() + " added successfully to the Locomotive\n");
+                        break;
+                    }
+                } if (foundHomeStation) {
+                    homeLoop = false;
+                } else {
+                    System.out.println("Please, enter the ID correctly");
+                    System.out.print("> ");
+                    inputInt = scan.nextInt();
                 }
-            } if (foundHomeStation) {
-                homeLoop = false;
-            } else {
-                System.out.println("Please, enter the ID correctly");
-                System.out.print("> ");
-                inputInt = scan.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter an integer.");
+                scan.next();
+            } catch (IndexOutOfBoundsException e) {
+                System.out.println("Invalid ID. Please enter a valid ID.");
+                scan.next();
             }
         }
 
@@ -155,20 +179,28 @@ public class Locomotive {
             boolean foundSourceStation = false;
 
             while (sourceLoop) {
-                for (RailwayStation station : RailwayStation.stations) {
-                    if (inputInt == station.ID) {
-                        foundSourceStation = true;
-                        locomotiveObjs.setSource(station);
-                        RailwayStation.stations.remove(station);
-                        System.out.println(station.getName() + " added successfully to the Locomotive\n");
-                        break;
+                try {
+                    for (RailwayStation station : RailwayStation.stations) {
+                        if (inputInt == station.ID) {
+                            foundSourceStation = true;
+                            locomotiveObjs.setSource(station);
+                            RailwayStation.stations.remove(station);
+                            System.out.println(station.getName() + " added successfully to the Locomotive\n");
+                            break;
+                        }
+                    } if (foundSourceStation) {
+                        sourceLoop = false;
+                    } else {
+                        System.out.println("Please, enter the ID correctly");
+                        System.out.print("> ");
+                        inputInt = scan.nextInt();
                     }
-                } if (foundSourceStation) {
-                    sourceLoop = false;
-                } else {
-                    System.out.println("Please, enter the ID correctly");
-                    System.out.print("> ");
-                    inputInt = scan.nextInt();
+                } catch (InputMismatchException e) {
+                    System.out.println("Invalid input. Please enter an integer.");
+                    scan.next();
+                } catch (IndexOutOfBoundsException e) {
+                    System.out.println("Invalid ID. Please enter a valid ID.");
+                    scan.next();
                 }
             }
         }
@@ -182,20 +214,28 @@ public class Locomotive {
         boolean foundDestinationStation = false;
 
         while (destinationLoop) {
-            for (RailwayStation station : RailwayStation.stations) {
-                if (inputInt == station.ID) {
-                    foundDestinationStation = true;
-                    locomotiveObjs.setDestination(station);
-                    RailwayStation.stations.remove(station);
-                    System.out.println(station.getName() + " added successfully to the Locomotive\n");
-                    break;
+            try {
+                for (RailwayStation station : RailwayStation.stations) {
+                    if (inputInt == station.ID) {
+                        foundDestinationStation = true;
+                        locomotiveObjs.setDestination(station);
+                        RailwayStation.stations.remove(station);
+                        System.out.println(station.getName() + " added successfully to the Locomotive\n");
+                        break;
+                    }
+                } if (foundDestinationStation) {
+                    destinationLoop = false;
+                } else {
+                    System.out.println("Please, enter the ID correctly");
+                    System.out.print("> ");
+                    inputInt = scan.nextInt();
                 }
-            } if (foundDestinationStation) {
-                destinationLoop = false;
-            } else {
-                System.out.println("Please, enter the ID correctly");
-                System.out.print("> ");
-                inputInt = scan.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter an integer.");
+                scan.next();
+            } catch (IndexOutOfBoundsException e) {
+                System.out.println("Invalid ID. Please enter a valid ID.");
+                scan.next();
             }
         }
 
