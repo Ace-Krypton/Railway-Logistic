@@ -1,7 +1,16 @@
+/**
+ * @file Locomotive.java
+ * @brief This file contains the implementation of Locomotive class and its methods.
+ */
+
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * @class Locomotive
+ * @brief This class represents a Locomotive with its attributes and functionality.
+ */
 public class Locomotive {
     private final Scanner scan = new Scanner(System.in);
     public static final ArrayList<Locomotive> locomotives = new ArrayList<>();
@@ -29,6 +38,9 @@ public class Locomotive {
     private static int id = -1;
     public int ID;
 
+    /**
+     * @brief Default constructor for Locomotive class.
+     */
     public Locomotive() {
         ++id;
         ID = id;
