@@ -54,7 +54,7 @@ public class Route {
         return distance;
     }
 
-    public void generate(Route routeObj) throws InterruptedException {
+    public void generate(Route routeObj) {
         System.out.println("Choose the Trainset: [Enter the ID number]");
         Trainset.printTrainsets();
 
@@ -62,12 +62,20 @@ public class Route {
         String inputTrainset = scan.next();
         boolean trainsetLoop = true;
         boolean foundTrainset = false;
+        boolean trainsetOnRoute = false;
 
         while (trainsetLoop) {
             try {
                 for (Trainset trainset : Trainset.trainsets) {
                     if (Integer.parseInt(inputTrainset) == trainset.ID) {
                         foundTrainset = true;
+                        if (Trainset.isOnRoute()) {
+                            trainsetOnRoute = true;
+                            System.out.println("Trainset is already on the road, please select a different trainset.");
+                            System.out.print("> ");
+                            inputTrainset = scan.next();
+                            break;
+                        }
                         String source = trainset.getLocomotive().getSource().getName();
                         String destination = trainset.getLocomotive().getDestination().getName();
                         routeObj.setDistance(distance(source, destination));
@@ -75,9 +83,9 @@ public class Route {
                         System.out.println("Calculated distance is: " + routeObj.getDistance() + "km");
                         System.out.println(routeObj.getFromTo());
                         routeObj.travelInBackground(routeObj.getDistance());
-                    } if (foundTrainset) {
+                    } if (foundTrainset && !trainsetOnRoute) {
                         trainsetLoop = false;
-                    } else {
+                    } else if (!trainsetOnRoute) {
                         System.out.println("Please, enter the ID correctly");
                         System.out.print("> ");
                         inputTrainset = scan.next();
@@ -125,7 +133,7 @@ public class Route {
         returnRoute.travel(returnRoute.getDistance());
     }
 
-    public void travelInBackground(final int distance) throws InterruptedException {
+    public void travelInBackground(final int distance) {
         Thread thread = new Thread(() -> {
             try {
                 travel(distance);
@@ -134,6 +142,5 @@ public class Route {
             }
         });
         thread.start();
-        thread.join();
     }
 }
