@@ -81,6 +81,11 @@ public class Locomotive {
     }
 
     public static void printLocomotives() {
+        if (Locomotive.locomotives.isEmpty()) {
+            System.out.println("You don't have any Locomotives\n");
+            return;
+        }
+
         for (Locomotive locomotive : locomotives) {
             System.out.println(locomotive);
         }

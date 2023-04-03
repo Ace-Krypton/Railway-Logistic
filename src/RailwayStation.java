@@ -31,6 +31,11 @@ public class RailwayStation {
     }
 
     public static void printStations() {
+        if (RailwayStation.stations.isEmpty()) {
+            System.out.println("You don't have any Railway Stations\n");
+            return;
+        }
+
         for (RailwayStation station : stations) {
             System.out.println(station);
         }

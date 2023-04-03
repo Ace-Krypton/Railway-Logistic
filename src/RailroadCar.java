@@ -66,6 +66,14 @@ public class RailroadCar {
                 """);
         System.out.print("Enter the type: ");
         String type = scan.next();
+        if (type.equalsIgnoreCase("1") || type.equalsIgnoreCase("2")
+                || type.equalsIgnoreCase("3") || type.equalsIgnoreCase("4")
+                || type.equalsIgnoreCase("5") || type.equalsIgnoreCase("6")
+                || type.equalsIgnoreCase("7")) {
+            System.out.println("Wrong input");
+            return;
+        }
+
         System.out.print("Enter the shipper: ");
         String shipper = scan.next();
         System.out.print("Enter the security info: ");
@@ -341,6 +349,11 @@ public class RailroadCar {
     }
 
     public static void printRailroadCars() {
+        if (RailroadCar.railroadCars.isEmpty()) {
+            System.out.println("You don't have any Railroad Cars\n");
+            return;
+        }
+
         for (RailroadCar car : railroadCars) {
             System.out.println(car);
         }

@@ -119,6 +119,11 @@ public class Trainset {
     }
 
     public static void printTrainsets() {
+        if (Trainset.trainsets.isEmpty()) {
+            System.out.println("You don't have any trainsets\n");
+            return;
+        }
+
         for (Trainset trainset : trainsets) {
             System.out.println(trainset);
         }
