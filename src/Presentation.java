@@ -64,7 +64,11 @@ public class Presentation {
 
                 case "4" -> Locomotive.printLocomotives();
 
-                case "5" -> {
+                case "5" -> railroadCar.createRailroadCar();
+
+                case "6" -> RailroadCar.printRailroadCars();
+
+                case "7" -> {
                     if (Locomotive.locomotives.isEmpty() || RailroadCar.railroadCars.isEmpty()) {
                         System.out.println(
                                 "You need to have at least 1 locomotive and 1 railroad car\n" +
@@ -79,9 +83,9 @@ public class Presentation {
                     trainset.createTrainsets(new Trainset());
                 }
 
-                case "6" -> Trainset.printTrainsets();
+                case "8" -> Trainset.printTrainsets();
 
-                case "7" -> {
+                case "9" -> {
                     if (Trainset.trainsets.isEmpty()) {
                         System.out.println("You need to have at least 1 trainset");
                         break;
@@ -103,12 +107,12 @@ public class Presentation {
         System.out.println("[1] Create Railway Station");
         System.out.println("[2] Print Railway Stations");
         System.out.println("[3] Create Locomotive");
-        System.out.println("[2] Print Locomotives");
-        System.out.println("[3] Create Railroad Cars");
-        System.out.println("[4] Print Railroad Cars");
-        System.out.println("[5] Create Trainset");
-        System.out.println("[6] Print Trainsets");
-        System.out.println("[7] Create Routes\n");
+        System.out.println("[4] Print Locomotives");
+        System.out.println("[5] Create Railroad Cars");
+        System.out.println("[6] Print Railroad Cars");
+        System.out.println("[7] Create Trainset");
+        System.out.println("[8] Print Trainsets");
+        System.out.println("[9] Create Routes\n");
         System.out.println("[0] Exit");
     }
 }
