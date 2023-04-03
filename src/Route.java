@@ -55,6 +55,7 @@ public class Route {
     }
 
     public void generate(Route routeObj) {
+        System.out.println("---------------- Generating the Route ----------------");
         System.out.println("Choose the Trainset: [Enter the ID number]");
         Trainset.printTrainsets();
 

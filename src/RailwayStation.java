@@ -37,6 +37,7 @@ public class RailwayStation {
     }
 
     public void createStations(RailwayStation stationObj) {
+        System.out.println("---------------- Creating the Railways ----------------");
         System.out.print("Enter the name of the station: ");
         String inputStr = scan.next();
         stationObj.setName(inputStr);

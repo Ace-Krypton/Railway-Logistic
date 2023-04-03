@@ -25,6 +25,7 @@ public class Presentation {
     Seventh Day of the project
     started at 4:12
     ended at 7:32
+    Eight Day of the project
     started at 5:21
     ended at ?
     */
@@ -96,10 +97,14 @@ public class Presentation {
 
     public static void menu() {
         System.out.println("[1] Create Railway Station");
-        System.out.println("[2] Create Locomotive");
+        System.out.println("[2] Print Railway Stations");
+        System.out.println("[3] Create Locomotive");
+        System.out.println("[2] Print Locomotives");
         System.out.println("[3] Create Railroad Cars");
-        System.out.println("[4] Create Trainset");
-        System.out.println("[5] Create Routes");
+        System.out.println("[4] Print Railroad Cars");
+        System.out.println("[5] Create Trainset");
+        System.out.println("[6] Print Trainsets");
+        System.out.println("[7] Create Routes\n");
         System.out.println("[0] Exit");
     }
 }

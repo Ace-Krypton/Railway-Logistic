@@ -54,6 +54,7 @@ public class RailroadCar {
     }
 
     public void createRailroadCar() {
+        System.out.println("---------------- Creating the Railroad Cars ----------------");
         System.out.println("""
                 [1] Passenger
                 [2] Post Office

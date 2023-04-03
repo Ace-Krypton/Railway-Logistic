@@ -38,6 +38,7 @@ public class Trainset {
 
 
     public void createTrainsets(Trainset trainsetObj) {
+        System.out.println("---------------- Creating the Trainsets ----------------");
         System.out.print("Enter the name of the trainset: ");
         String name = scan.next();
         trainsetObj.setName(name);
