@@ -115,7 +115,6 @@ public class Trainset {
             }
         }
         trainsets.add(trainsetObj);
-        System.out.println(trainsetObj);
     }
 
     public static void printTrainsets() {

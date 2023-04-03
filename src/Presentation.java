@@ -34,7 +34,7 @@ public class Presentation {
     static Trainset trainset = new Trainset();
     static Route route = new Route();
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         String input;
         boolean loop = true;
         Scanner scan = new Scanner(System.in);
@@ -93,7 +93,7 @@ public class Presentation {
         }
     }
 
-    private static void menu() {
+    public static void menu() {
         System.out.println("[1] Create Railway Station");
         System.out.println("[2] Create Locomotive");
         System.out.println("[3] Create Railroad Cars");
