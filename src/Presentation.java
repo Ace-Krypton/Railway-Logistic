@@ -88,6 +88,7 @@ public class Presentation {
                     System.out.println("exiting...");
                     loop = false;
                 }
+
                 default -> System.out.println("Please, choose correct number\n");
             }
         }
