@@ -13,6 +13,7 @@ public class Route {
     static {
         int distance = 20;
         for (char c = 'a'; c <= 'z'; c++) {
+            if (distance > 200) break;
             distances.put(c, distance);
             distance += 20;
         }
@@ -38,14 +39,19 @@ public class Route {
         if (s1 == null || s2 == null) {
             throw new IllegalArgumentException("Input strings cannot be null.");
         }
-        int distance = 0;
         s1 = s1.toLowerCase();
         s2 = s2.toLowerCase();
+        int distance = 0;
         for (int i = 0; i < s1.length() && i < s2.length(); i++) {
             distance += distances.getOrDefault(s1.charAt(i), 0) -
                     distances.getOrDefault(s2.charAt(i), 0);
+            distance = Math.max(distance, 20);
+            if (distance > 200) {
+                distance = 200;
+                break;
+            }
         }
-        return Math.max(distance, 0);
+        return distance;
     }
 
     public void generate(Route routeObj) throws InterruptedException {
@@ -68,7 +74,7 @@ public class Route {
                         routeObj.setFromTo("From " + source + " to " + destination);
                         System.out.println("Calculated distance is: " + routeObj.getDistance() + "km");
                         System.out.println(routeObj.getFromTo());
-                        routeObj.travel(routeObj.getDistance());
+                        routeObj.travelInBackground(routeObj.getDistance());
                     } if (foundTrainset) {
                         trainsetLoop = false;
                     } else {
@@ -111,10 +117,23 @@ public class Route {
         }
 
         System.out.println("Arrived at the destination station");
+        System.out.println("Now waiting 30 seconds...");
         Thread.sleep(30000);
 
         Route returnRoute = new Route();
         returnRoute.generate(new Route());
         returnRoute.travel(returnRoute.getDistance());
+    }
+
+    public void travelInBackground(final int distance) throws InterruptedException {
+        Thread thread = new Thread(() -> {
+            try {
+                travel(distance);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+        thread.start();
+        thread.join();
     }
 }
