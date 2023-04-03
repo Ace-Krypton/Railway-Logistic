@@ -48,7 +48,9 @@ public class Presentation {
             switch(input.toLowerCase(Locale.ROOT)) {
                 case "1" -> station.createStations(new RailwayStation());
 
-                case "2" -> {
+                case "2" -> RailwayStation.printStations();
+
+                case "3" -> {
                     if (RailwayStation.stations.isEmpty() || (long) RailwayStation.stations.size() < 3) {
                         System.out.println(
                                 "You need to have at least 3 stations in the Railway\n" +
@@ -60,9 +62,9 @@ public class Presentation {
                     locomotive.createLocomotives(new Locomotive());
                 }
 
-                case "3" -> railroadCar.createRailroadCar();
+                case "4" -> Locomotive.printLocomotives();
 
-                case "4" -> {
+                case "5" -> {
                     if (Locomotive.locomotives.isEmpty() || RailroadCar.railroadCars.isEmpty()) {
                         System.out.println(
                                 "You need to have at least 1 locomotive and 1 railroad car\n" +
@@ -77,7 +79,9 @@ public class Presentation {
                     trainset.createTrainsets(new Trainset());
                 }
 
-                case "5" -> {
+                case "6" -> Trainset.printTrainsets();
+
+                case "7" -> {
                     if (Trainset.trainsets.isEmpty()) {
                         System.out.println("You need to have at least 1 trainset");
                         break;
