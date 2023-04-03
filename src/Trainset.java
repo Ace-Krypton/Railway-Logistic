@@ -136,8 +136,8 @@ public class Trainset {
         StringBuilder builder = new StringBuilder();
         builder.append(ID).append(". ")
                 .append("Name: ").append(getName()).append("\n")
-                .append("Locomotive: \n[").append(this.locomotive).append("]\n")
-                .append("Railroad Cars: \n[");
+                .append("\nLocomotive: ").append(this.locomotive).append("]\n")
+                .append("\nRailroad Cars: ");
         for (int i = 0; i < this.railroadCars.size(); i++) {
             builder.append(this.railroadCars.get(i));
             if (i != this.railroadCars.size() - 1) {

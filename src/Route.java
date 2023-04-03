@@ -125,11 +125,11 @@ public class Route {
             Trainset.class.notifyAll();
         }
 
-        System.out.println("Arrived at the destination station");
+        System.out.println("----------- Arrived at the destination station -----------");
         System.out.println("Now waiting 30 seconds...");
         Thread.sleep(30000);
 
-        System.out.println("Travelling back");
+        System.out.println("----------- Returning back -----------");
         synchronized (Trainset.class) {
             while (Trainset.isOnRoute()) {
                 System.out.println("Train is waiting for the route to be released...");
