@@ -129,9 +129,25 @@ public class Route {
         System.out.println("Now waiting 30 seconds...");
         Thread.sleep(30000);
 
-        Route returnRoute = new Route();
-        returnRoute.generate(new Route());
-        returnRoute.travel(returnRoute.getDistance());
+        System.out.println("Travelling back");
+        synchronized (Trainset.class) {
+            while (Trainset.isOnRoute()) {
+                System.out.println("Train is waiting for the route to be released...");
+                Trainset.class.wait();
+            }
+            Trainset.setOnRoute(true);
+        }
+
+        for (int i = distance; i >= 0 ; i -= 2) {
+            System.out.println("Travelling to station " + (i + 1) + " out of " + distance);
+            Thread.sleep(1000);
+        }
+
+        synchronized (Trainset.class) {
+            Trainset.setOnRoute(false);
+            Trainset.class.notifyAll();
+        }
+
     }
 
     public void travelInBackground(final int distance) {

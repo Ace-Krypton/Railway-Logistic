@@ -86,9 +86,11 @@ public class Locomotive {
             return;
         }
 
+        System.out.println("---------------- Locomotives ----------------");
         for (Locomotive locomotive : locomotives) {
             System.out.println(locomotive);
         }
+        System.out.println();
     }
 
     public void updateSpeed() {
@@ -242,7 +244,6 @@ public class Locomotive {
             }
         }
 
-        System.out.println(locomotiveObjs + " added successfully to the Locomotives\n");
         locomotives.add(locomotiveObjs);
     }
 

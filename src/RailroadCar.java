@@ -66,10 +66,10 @@ public class RailroadCar {
                 """);
         System.out.print("Enter the type: ");
         String type = scan.next();
-        if (type.equalsIgnoreCase("1") || type.equalsIgnoreCase("2")
+        if (!(type.equalsIgnoreCase("1") || type.equalsIgnoreCase("2")
                 || type.equalsIgnoreCase("3") || type.equalsIgnoreCase("4")
                 || type.equalsIgnoreCase("5") || type.equalsIgnoreCase("6")
-                || type.equalsIgnoreCase("7")) {
+                || type.equalsIgnoreCase("7"))) {
             System.out.println("Wrong input");
             return;
         }
@@ -354,9 +354,11 @@ public class RailroadCar {
             return;
         }
 
+        System.out.println("---------------- Railroad Cars ----------------");
         for (RailroadCar car : railroadCars) {
             System.out.println(car);
         }
+        System.out.println();
     }
 
     @Override

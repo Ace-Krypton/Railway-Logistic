@@ -124,9 +124,11 @@ public class Trainset {
             return;
         }
 
+        System.out.println("---------------- Trainsets ----------------");
         for (Trainset trainset : trainsets) {
             System.out.println(trainset);
         }
+        System.out.println();
     }
 
     @Override

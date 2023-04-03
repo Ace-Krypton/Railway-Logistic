@@ -36,9 +36,11 @@ public class RailwayStation {
             return;
         }
 
+        System.out.println("---------------- Railway Stations ----------------");
         for (RailwayStation station : stations) {
             System.out.println(station);
         }
+        System.out.println();
     }
 
     public void createStations(RailwayStation stationObj) {
