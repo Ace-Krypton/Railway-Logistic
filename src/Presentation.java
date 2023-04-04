@@ -4,36 +4,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Presentation {
-    /*
-    NOTES
-    First Day of the project:
-    started at 8:30
-    ended at 9:40
-    Second Day of the project:
-    started at 5:40
-    ended at 8:04
-    Third Day of the project
-    started at 6:38
-    ended at 9:29
-    Fourth Day of the project:
-    started at 4:13
-    ended at 8:00
-    Fifth Day of the project:
-    started at 6:20
-    ended at 8:38
-    Sixth Day of the project:
-    started at 4:24
-    ended at 7:22
-    Seventh Day of the project:
-    started at 4:12
-    ended at 7:32
-    Eight Day of the project:
-    started at 5:21
-    ended at 6:00
-    Ninth Day of the project:
-    started at 7:00
-    ended at 8:49
-    */
     static RailwayStation station = new RailwayStation();
     static Locomotive locomotive = new Locomotive();
     static RailroadCar railroadCar = new RailroadCar();
