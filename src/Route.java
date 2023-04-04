@@ -105,11 +105,12 @@ public class Route {
             }
         }
 
-        System.out.println("Route added successfully to the route list");
+        System.out.println("Route added successfully to the route list\n");
         routes.add(routeObj);
     }
 
     public void travel(int distance, Trainset trainset) throws InterruptedException, RailroadHazard {
+        System.out.print("\n> ");
         System.out.println("Starting travel from " + fromTo);
         Thread.sleep(2000);
 
@@ -122,22 +123,22 @@ public class Route {
         }
 
         for (int i = 0; i < distance; i += trainset.getLocomotive().getSpeed()) {
-            System.out.println("Travelling to station " + (i + 1) + " out of " + distance);
+            //System.out.println("Travelling to station " + (i + 1) + " out of " + distance);
             Thread.sleep(1000);
         }
 
         if (trainset.getLocomotive().getSpeed() > 200) {
-            throw new RailroadHazard("Train set speed exceeds 200 km/h. Train set: " + trainset);
+            throw new RailroadHazard("TrainSet speed exceeds 200 km/h. Train set: " + trainset);
         }
-
-        System.out.print("\n> ");
 
         synchronized (Trainset.class) {
             Trainset.setOnRoute(false);
             Trainset.class.notifyAll();
         }
 
-        System.out.println("----------- Arrived at the destination station -----------");
+        System.out.print("\n> ");
+
+        System.out.println("----------- " + trainset.getName() + " is arrived at the destination station -----------");
         System.out.println("Now waiting 30 seconds...");
         Thread.sleep(30000);
 
@@ -149,13 +150,11 @@ public class Route {
             Trainset.setOnRoute(true);
         }
 
-        System.out.println("----------- Returning back -----------");
+        System.out.println("----------- " + trainset.getName() + " is returning back -----------");
         for (int i = distance; i >= 0 ; i -= trainset.getLocomotive().getSpeed()) {
-            System.out.println("Travelling to station " + (i + 1) + " out of " + distance);
+            //System.out.println("Travelling to station " + (i + 1) + " out of " + distance);
             Thread.sleep(1000);
         }
-
-        System.out.print("\n> ");
 
         synchronized (Trainset.class) {
             Trainset.setOnRoute(false);
