@@ -19,14 +19,17 @@ public class Presentation {
     Fifth Day of the project:
     started at 6:20
     ended at 8:38
-    Sixth Day of the project
+    Sixth Day of the project:
     started at 4:24
     ended at 7:22
-    Seventh Day of the project
+    Seventh Day of the project:
     started at 4:12
     ended at 7:32
-    Eight Day of the project
+    Eight Day of the project:
     started at 5:21
+    ended at 6:00
+    Ninth Day of the project:
+    started at 7:00
     ended at ?
     */
     static RailwayStation station = new RailwayStation();
