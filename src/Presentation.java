@@ -32,7 +32,7 @@ public class Presentation {
     ended at 6:00
     Ninth Day of the project:
     started at 7:00
-    ended at ?
+    ended at 8:49
     */
     static RailwayStation station = new RailwayStation();
     static Locomotive locomotive = new Locomotive();
