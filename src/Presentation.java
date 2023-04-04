@@ -1,5 +1,7 @@
 import java.util.Locale;
 import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Presentation {
     /*
@@ -42,6 +44,14 @@ public class Presentation {
         String input;
         boolean loop = true;
         Scanner scan = new Scanner(System.in);
+
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Trainset.updateAppState();
+            }
+        }, 0, 5000);
 
         while (loop) {
             menu();
@@ -104,6 +114,7 @@ public class Presentation {
                 default -> System.out.println("Please, choose correct number\n");
             }
         }
+        timer.cancel();
     }
 
     public static void menu() {
