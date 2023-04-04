@@ -83,7 +83,13 @@ public class Route {
                         routeObj.setFromTo("From " + source + " to " + destination);
                         System.out.println("Calculated distance is: " + routeObj.getDistance() + "km");
                         System.out.println(routeObj.getFromTo());
-                        routeObj.travelInBackground(routeObj.getDistance());
+                        System.out.println("Do you want to travel right now?\n" +
+                                "if \"yes\" input \"y\" if \"no\" input \"N\"");
+                        System.out.print("y/N > ");
+                        String input = scan.next();
+                        boolean willTravel = input.equalsIgnoreCase("Y");
+                        if (willTravel) routeObj.travelInBackground(routeObj.getDistance());
+                        else return;
                     } if (foundTrainset && !trainsetOnRoute) {
                         trainsetLoop = false;
                     } else if (!trainsetOnRoute) {
@@ -116,9 +122,11 @@ public class Route {
         }
 
         for (int i = 0; i < distance; i += 2) {
-            System.out.println("Travelling to station " + (i + 1) + " out of " + distance);
+            //System.out.println("Travelling to station " + (i + 1) + " out of " + distance);
             Thread.sleep(1000);
         }
+
+        System.out.print("\n> ");
 
         synchronized (Trainset.class) {
             Trainset.setOnRoute(false);
@@ -139,15 +147,16 @@ public class Route {
         }
 
         for (int i = distance; i >= 0 ; i -= 2) {
-            System.out.println("Travelling to station " + (i + 1) + " out of " + distance);
+            //System.out.println("Travelling to station " + (i + 1) + " out of " + distance);
             Thread.sleep(1000);
         }
+
+        System.out.print("\n> ");
 
         synchronized (Trainset.class) {
             Trainset.setOnRoute(false);
             Trainset.class.notifyAll();
         }
-
     }
 
     public void travelInBackground(final int distance) {
