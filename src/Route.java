@@ -110,9 +110,10 @@ public class Route {
     }
 
     public void travel(int distance, Trainset trainset) throws InterruptedException, RailroadHazard {
-        System.out.print("\n> ");
         System.out.println("Starting travel from " + fromTo);
         Thread.sleep(2000);
+
+        System.out.print("\n> ");
 
         synchronized (Trainset.class) {
             while (Trainset.isOnRoute()) {

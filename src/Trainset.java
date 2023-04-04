@@ -1,9 +1,12 @@
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.*;
 
 public class Trainset {
     private static final Scanner scan = new Scanner(System.in);
     public static ArrayList<Trainset> trainsets = new ArrayList<>();
+    private static final int UPDATE_INTERVAL = 5000;
+    private static long lastUpdateTime = 0;
     private final ArrayList<RailroadCar> railroadCars = new ArrayList<>();
     private Locomotive locomotive;
     private static boolean onRoute;
@@ -129,6 +132,27 @@ public class Trainset {
             System.out.println(trainset);
         }
         System.out.println();
+    }
+
+    public static void updateAppState() {
+        long currentTime = System.currentTimeMillis();
+        if (currentTime - lastUpdateTime >= UPDATE_INTERVAL) {
+            trainsets.sort((t1, t2) ->
+                    Integer.compare(t2.getLocomotive().getMaxElectricalGrid(), t1.getLocomotive().getMaxElectricalGrid()));
+            try (PrintWriter writer = new PrintWriter("AppState.txt")) {
+                for (Trainset trainset : trainsets) {
+                    trainset.railroadCars.sort(Comparator.comparingDouble(RailroadCar::getGrossWeight));
+                    writer.println(trainset);
+                    for (RailroadCar railroadCar : trainset.railroadCars) {
+                        writer.println(railroadCar);
+                    }
+                    writer.println();
+                }
+            } catch (IOException e) {
+                System.err.println("Error updating AppState.txt file: " + e.getMessage());
+            }
+            lastUpdateTime = currentTime;
+        }
     }
 
     @Override
