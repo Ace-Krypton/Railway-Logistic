@@ -88,7 +88,7 @@ public class Route {
                         System.out.print("y/N > ");
                         String input = scan.next();
                         boolean willTravel = input.equalsIgnoreCase("Y");
-                        if (willTravel) routeObj.travelInBackground(routeObj.getDistance());
+                        if (willTravel) routeObj.travelInBackground(routeObj.getDistance(), trainset);
                         else return;
                     } if (foundTrainset && !trainsetOnRoute) {
                         trainsetLoop = false;
@@ -109,7 +109,7 @@ public class Route {
         routes.add(routeObj);
     }
 
-    public void travel(int distance) throws InterruptedException {
+    public void travel(int distance, Trainset trainset) throws InterruptedException, RailroadHazard {
         System.out.println("Starting travel from " + fromTo);
         Thread.sleep(2000);
 
@@ -121,9 +121,14 @@ public class Route {
             Trainset.setOnRoute(true);
         }
 
+
         for (int i = 0; i < distance; i += 2) {
             //System.out.println("Travelling to station " + (i + 1) + " out of " + distance);
             Thread.sleep(1000);
+        }
+
+        if (trainset.getLocomotive().getSpeed() > 200) {
+            throw new RailroadHazard("Train set speed exceeds 200 km/h. Train set: " + trainset);
         }
 
         System.out.print("\n> ");
@@ -159,11 +164,11 @@ public class Route {
         }
     }
 
-    public void travelInBackground(final int distance) {
+    public void travelInBackground(final int distance, Trainset trainset) {
         Thread thread = new Thread(() -> {
             try {
-                travel(distance);
-            } catch (InterruptedException e) {
+                travel(distance, trainset);
+            } catch (InterruptedException | RailroadHazard e) {
                 e.printStackTrace();
             }
         });

@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class Locomotive {
     private final Scanner scan = new Scanner(System.in);
@@ -15,9 +18,12 @@ public class Locomotive {
     private int maxElectricalGrid;
     private static int id = -1;
     public int ID;
+
     public Locomotive() {
         ++id;
         ID = id;
+        ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
+        scheduler.scheduleAtFixedRate(this::updateSpeed, 0, 1, TimeUnit.SECONDS);
     }
 
     public int getMaxRailroadCars() {
