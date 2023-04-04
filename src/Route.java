@@ -121,9 +121,8 @@ public class Route {
             Trainset.setOnRoute(true);
         }
 
-
-        for (int i = 0; i < distance; i += 2) {
-            //System.out.println("Travelling to station " + (i + 1) + " out of " + distance);
+        for (int i = 0; i < distance; i += trainset.getLocomotive().getSpeed()) {
+            System.out.println("Travelling to station " + (i + 1) + " out of " + distance);
             Thread.sleep(1000);
         }
 
@@ -151,8 +150,8 @@ public class Route {
         }
 
         System.out.println("----------- Returning back -----------");
-        for (int i = distance; i >= 0 ; i -= 2) {
-            //System.out.println("Travelling to station " + (i + 1) + " out of " + distance);
+        for (int i = distance; i >= 0 ; i -= trainset.getLocomotive().getSpeed()) {
+            System.out.println("Travelling to station " + (i + 1) + " out of " + distance);
             Thread.sleep(1000);
         }
 

@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 public class Locomotive {
     private final Scanner scan = new Scanner(System.in);
     public static final ArrayList<Locomotive> locomotives = new ArrayList<>();
-    private double speed = 100;
+    private double speed = 10;
     private String name;
     private RailwayStation home;
     private RailwayStation source;
