@@ -115,6 +115,7 @@ public class Presentation {
             }
         }
         timer.cancel();
+        System.exit(0);
     }
 
     public static void menu() {
