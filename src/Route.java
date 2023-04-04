@@ -137,7 +137,6 @@ public class Route {
         System.out.println("Now waiting 30 seconds...");
         Thread.sleep(30000);
 
-        System.out.println("----------- Returning back -----------");
         synchronized (Trainset.class) {
             while (Trainset.isOnRoute()) {
                 System.out.println("Train is waiting for the route to be released...");
@@ -146,6 +145,7 @@ public class Route {
             Trainset.setOnRoute(true);
         }
 
+        System.out.println("----------- Returning back -----------");
         for (int i = distance; i >= 0 ; i -= 2) {
             //System.out.println("Travelling to station " + (i + 1) + " out of " + distance);
             Thread.sleep(1000);
