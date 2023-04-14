@@ -39,6 +39,7 @@ public class Presentation {
                         String ANSI_RED = "\u001B[31m";
                         String ANSI_RESET = "\u001B[0m";
                         System.out.println('\n' + ANSI_RED + "Authentication Revoked!" + ANSI_RESET);
+                        System.out.println("-----------------------------------------------\n");
                     } else {
                         System.out.println("\nAuthentication Successful!");
                         System.out.println("-----------------------------------------------\n");
